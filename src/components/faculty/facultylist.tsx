@@ -183,6 +183,7 @@ const FacultyList: FC<IProps> = ({ edit, board }) => {
   return (
     <>
       {!board && <HtmlDynamic data={heading} />}
+      <br/>
       <Card.Group itemsPerRow={4} stackable centered>
         {people.map((pep, index) => {
           if (

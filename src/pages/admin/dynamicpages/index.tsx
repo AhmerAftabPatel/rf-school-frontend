@@ -72,7 +72,7 @@ const AdminPages = (props) => {
     // details.forEach((detail) => {
     formData.set('bannerId', values._id);
     for (var key in newValues) {
-      if(newValues[key]){
+      if(key !== "flyer" && key !== "bannner" ?  newValues[key] : true){
       formData.set(key, newValues[key]);
       }
     }

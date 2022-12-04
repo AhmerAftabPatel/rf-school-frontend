@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import { Dropdown, Form, Image } from 'semantic-ui-react';
+import { Dropdown, Form, Icon, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import BreadcrumbSection from '@/base/Breadcrumb';
 import { s3_url } from '@/../constants';
@@ -88,7 +88,7 @@ console.log(values,"uhygtfr")
 
         <input type="file" onChange={handleChangeImage("photo")} />
         <br />
-        <h3 style={{ margin: '5px 0' }}>Add/Edit Flyer</h3>
+        <h3 style={{ margin: '5px 0' }}>Add/Edit Flyer <Icon name='cancel' color="red" onClick={() => {setValues({...values,flyer : ""}); setNewValues({...newValues,flyer : ""})}}/></h3>
         {newValues && flyer ? (
           <Image src={flyer ? URL.createObjectURL(flyer) : '/images/dummyprofle'} size="tiny" />
         ) : (
