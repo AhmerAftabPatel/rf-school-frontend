@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Accordion, Button, Card, Divider, Form, Header, Icon, Image, Label, Modal } from 'semantic-ui-react';
+import { Accordion, Button, Card, Divider, Form, Header, Icon, Image, Label, Modal, Popup } from 'semantic-ui-react';
 import styled from 'styled-components';
 import moment from 'moment';
 import withAuth from '../../../../helpers/withAuth';
@@ -16,14 +16,14 @@ interface IProps {}
 
 const FoldersGallery = (props) => {
   const history = useRouter();
-  if(props.id){
-    history.query.id = '6373ce280eeb0102084131c2'
+  if (props.id) {
+    history.query.id = '6373ce280eeb0102084131c2';
   }
-  
+
   const [folder, setFolder] = useState({
     media: [],
     name: '',
-    description : "",
+    description: '',
     _id: '',
   });
   const preload = (id) => {
@@ -43,14 +43,30 @@ const FoldersGallery = (props) => {
     axios
       .delete(`${API}/folder?folderId=${id}&name=${media}`)
       .then((res) => {
-        alert('deleted Successfully!');
+        alert('Deleted Successfully!');
         preload(history.query.id);
       })
       .catch((err) => {
         alert(err);
       });
   };
-
+  const onReplace = (id: string, media: string, file) => {
+    if (file) {
+      const formData = new FormData();
+      formData.set('image_name', media);
+      formData.set('folderId', id);
+      formData.set('image_url', file);
+      axios
+        .put(`${API}/folder/media`, formData)
+        .then((res) => {
+          alert('Updated Successfully!');
+          preload(history.query.id);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+  };
   useEffect(() => {
     if (history.query.id) {
       preload(history.query.id);
@@ -87,11 +103,34 @@ const FoldersGallery = (props) => {
       <Card.Group itemsPerRow={4}>
         {folder.media.map((media, index) => {
           return (
-            <Card key={index} style={{ textAlign: 'center' }}>
-              <Image src={s3_url + media.replace(" ","+")} style ={{height :"200px"}}/>
-              <Label attached="bottom right" color="red" icon onClick={() => onDelete(folder._id, media)}>
-                <Icon name="trash" />
-              </Label>
+            <Card key={index} style={{ textAlign: 'center', position: 'relative' }}>
+              <Image src={s3_url + media.replace(' ', '+')} style={{ height: '200px' }} />
+              <label htmlFor="input-file">
+                {/* <div style={{posit}}>Replace</div> */}
+                <Popup
+                  trigger={
+                    <Label style={{ position: 'absolute', right: '50px' }} attached="bottom right" color="red" icon>
+                      <Icon name="reply" />
+                    </Label>
+                  }
+                  content="Replace Image"
+                ></Popup>
+              </label>
+              <input
+                id="input-file"
+                placeholder="Replace Image"
+                style={{ display: 'none' }}
+                type="file"
+                onChange={(e) => onReplace(folder._id, media, e.target.files[0])}
+              />
+              <Popup
+                trigger={
+                  <Label attached="bottom right" color="red" icon onClick={() => onDelete(folder._id, media)}>
+                    <Icon name="trash" />
+                  </Label>
+                }
+                content="Delete Image"
+              ></Popup>
             </Card>
           );
         })}

@@ -108,7 +108,7 @@ const StyledHeader = styled.header`
     background-size: cover;
     display: flex;
     background-attachment: fixed;
-    background-position: center;
+    // background-position: center;
     border: 10px solid white;
     background-repeat: no-repeat;
     width: 100%;

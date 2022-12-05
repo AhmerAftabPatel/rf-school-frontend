@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import HtmlDynamic from '@/base/htmlDynamic';
 import BaseHeading from '@/base/BaseHeader';
 import Link from 'next/link';
+import styled from 'styled-components'
 // export const getServerSideProps = async (context) => {
 //   const preload = await axios.get(`${API}/page?href=welcome`);
 //   const fetched = await preload.data.json();
@@ -37,14 +38,14 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
                   {parentsandstudents.map((accord, index) => {
                     return (
                       <Link href={accord.href}>
-                        <List.Item style={{ cursor: 'pointer' }} key={index} className={tw('text-xl font-medium m-2')}>
-                          -- {accord.page}
+                        <List.Item style={{ cursor: 'pointer',color : "blue" }} key={index} className={tw('text-xl font-medium m-2')}>
+                          <StyledHover>-- {accord.page}</StyledHover>
                         </List.Item>
                       </Link>
                     );
                   })}
                    <Link href={"students-corner"}>
-                        <List.Item style={{ cursor: 'pointer' }}  className={tw('text-xl font-medium m-2')}>
+                        <List.Item style={{ cursor: 'pointer',color : "blue" }}  className={tw('text-xl font-medium m-2')}>
                           -- Students Corner
                         </List.Item>
                       </Link>
@@ -117,5 +118,12 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
     </section>
   );
 };
+
+const StyledHover = styled.span`{
+  color : blue;
+  :hover{
+    color : red;
+  }
+}`
 
 export default InfoSection;
