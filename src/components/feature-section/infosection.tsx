@@ -46,7 +46,7 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
                   })}
                    <Link href={"students-corner"}>
                         <List.Item style={{ cursor: 'pointer',color : "blue" }}  className={tw('text-xl font-medium m-2')}>
-                          -- Students Corner
+                          <StyledHover>-- Students Corner</StyledHover>
                         </List.Item>
                       </Link>
                 </List>
