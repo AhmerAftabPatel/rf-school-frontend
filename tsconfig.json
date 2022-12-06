@@ -19,5 +19,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/logoDetails", "src/base/SideMenu.tsx", "src/base/Breadcrumb.js", "src/pages/admin/index.js", "src/pages/admin/volunteer", "src/components/forms/volunteer.js"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
