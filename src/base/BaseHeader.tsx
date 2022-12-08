@@ -5,11 +5,12 @@ import axios from 'axios';
 import { API } from '@/../constants';
 import { LinksContext } from '@/context/links/auth/LinkContext';
 import SubMenu from './Submenu';
-import Aos from 'aos'
+import Aos from 'aos';
 import styled from 'styled-components';
 interface IProps {
   Heading: string;
   size: string;
+  center: boolean;
 }
 
 /**
@@ -22,11 +23,13 @@ const sizes = {
   large: '5',
 };
 
-const BaseHeading: FC<IProps> = ({ Heading, size = 'large' }) => {
+const BaseHeading: FC<IProps> = ({ Heading, size = 'large', center }) => {
   return (
-    <div>
-      <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)} data-aos="fade-in" >{Heading}</h1>
-      <div className={tw('h-2 w-20 bg-green-600 my-6')} />
+    <div style={center ? { display: 'flex', flexDirection: 'column', alignItems: 'center' } : {}}>
+      <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)} data-aos="fade-in">
+        {Heading}
+      </h1>
+      <div className={tw(`h-2 w-20 bg-green-600 my-6`)} />
     </div>
   );
 };

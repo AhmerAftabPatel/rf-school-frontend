@@ -110,7 +110,7 @@ const Volunteer = (props) => {
 
   console.log(volunteer.volunteer_area, 'volunteer.volunteer_area ');
   return (
-    <div className={tw('p-4')}>
+    <div className={tw('py-4')}>
       <div>{success && <p>Form Submitted</p>}</div>
       <div>{error && <p>Something Unexpected happened</p>}</div>
       <Form loading={loading} success={success} error={error} onSubmit={onSubmit}>

@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import BaseHeading from './BaseHeader';
 interface IProps {
   data: { page: string; description: string; };
+  center : boolean;
 }
 
 /**
@@ -16,12 +17,12 @@ interface IProps {
  * @function @Section
  **/
 
-const HtmlDynamic: FC<IProps> = ({ data }) => {
+const HtmlDynamic: FC<IProps> = ({ data, center = false }) => {
   return (
     <div>
       {data ? (
-        <div>
-          <BaseHeading Heading={data?.page} size="large"/>
+        <div style={{textAlign : center ? 'center' : "left"}}>
+          <BaseHeading Heading={data?.page} size="large" center ={center}/>
           <div dangerouslySetInnerHTML={{ __html: data?.description }}></div>
         </div>
       ) : (

@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import React, { FC } from 'react';
 import { Grid, Header, Icon } from 'semantic-ui-react';
 import { tw, css } from 'twind/css';
+import Admission from '@/components/forms/admission';
 
 const headerstyle = css`
   padding: 20px 50px;
@@ -24,7 +25,7 @@ const headerstyle = css`
 `;
 
 export const getServerSideProps = async () => {
-  const preload = await axios.get(`${API}/page?href=volunteer-signup`);
+  const preload = await axios.get(`${API}/page?href=admission-form`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
   if (preload.status !== 200) {
@@ -33,10 +34,10 @@ export const getServerSideProps = async () => {
     };
   }
   return {
-    props: { volunteer: preload.data },
+    props: { admission: preload.data },
   };
 };
-const Contact = ({ volunteer }) => {
+const Contact = ({ admission }) => {
   return (
     <div>
       <div>
@@ -51,9 +52,9 @@ const Contact = ({ volunteer }) => {
           {/* <Grid.Row> */}
           {/* <Grid.Column width={10}> */}
           {/* <BaseHeading Heading={volunteer.heading} center/> */}
-          <HtmlDynamic data={volunteer} center/>
+          <HtmlDynamic data={admission} center/>
           <StyledCard>
-            <Volunteer />
+            <Admission />
           </StyledCard>
           {/* </Grid.Column> */}
           {/* <Grid.Column width={8}></Grid.Column> */}
