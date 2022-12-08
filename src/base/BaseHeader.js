@@ -7,11 +7,7 @@ import { LinksContext } from '@/context/links/auth/LinkContext';
 import SubMenu from './Submenu';
 import Aos from 'aos';
 import styled from 'styled-components';
-interface IProps {
-  Heading: string;
-  size: string;
-  center: boolean;
-}
+
 
 /**
  * @author
@@ -23,7 +19,7 @@ const sizes = {
   large: '5',
 };
 
-const BaseHeading: FC<IProps> = ({ Heading, size = 'large', center }) => {
+const BaseHeading = ({ Heading, size = 'large', center=false }) => {
   return (
     <div style={center ? { display: 'flex', flexDirection: 'column', alignItems: 'center' } : {}}>
       <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)} data-aos="fade-in">

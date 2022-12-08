@@ -7,17 +7,14 @@ import { LinksContext } from '@/context/links/auth/LinkContext';
 import SubMenu from './Submenu';
 import styled from 'styled-components';
 import BaseHeading from './BaseHeader';
-interface IProps {
-  data: { page: string; description: string; };
-  center : boolean;
-}
+
 
 /**
  * @author
  * @function @Section
  **/
 
-const HtmlDynamic: FC<IProps> = ({ data, center = false }) => {
+const HtmlDynamic = ({ data, center = false }) => {
   return (
     <div>
       {data ? (
