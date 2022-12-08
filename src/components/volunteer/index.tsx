@@ -10,10 +10,10 @@ const VolunteerList = ({ volunteer }) => {
             <Table.HeaderCell>Address</Table.HeaderCell>
             <Table.HeaderCell>Phone Number</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>Age 18+</Table.HeaderCell>
-            <Table.HeaderCell>Rf school reference</Table.HeaderCell>
-            <Table.HeaderCell>Company Name</Table.HeaderCell>
-            <Table.HeaderCell>Company Members</Table.HeaderCell>
+            {/* <Table.HeaderCell>Age 18+</Table.HeaderCell> */}
+            {/* <Table.HeaderCell>Rf school reference</Table.HeaderCell> */}
+            {/* <Table.HeaderCell>Company Name</Table.HeaderCell> */}
+            {/* <Table.HeaderCell>Company Members</Table.HeaderCell> */}
             <Table.HeaderCell>Volunteer Area Selcted</Table.HeaderCell>
             <Table.HeaderCell>Personal Message</Table.HeaderCell>
           </Table.Row>
@@ -37,10 +37,10 @@ const VolunteerList = ({ volunteer }) => {
                 </Table.Cell>
                 <Table.Cell>{volunt?.phone_number}</Table.Cell>
                 <Table.Cell>{volunt?.email}</Table.Cell>
-                <Table.Cell>{volunt?.age ? 'Yes' : 'No'}</Table.Cell>
-                <Table.Cell>{volunt?.reference_from}</Table.Cell>
-                <Table.Cell>{volunt?.company_name}</Table.Cell>
-                <Table.Cell>{volunt?.company_members}</Table.Cell>
+                {/* <Table.Cell>{volunt?.age ? 'Yes' : 'No'}</Table.Cell> */}
+                {/* <Table.Cell>{volunt?.reference_from}</Table.Cell> */}
+                {/* <Table.Cell>{volunt?.company_name}</Table.Cell> */}
+                {/* <Table.Cell>{volunt?.company_members}</Table.Cell> */}
                 <Table.Cell>{volunt?.volunteer_area}</Table.Cell>
                 <Table.Cell>{volunt?.message}</Table.Cell>
               </Table.Row>

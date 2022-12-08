@@ -1,4 +1,5 @@
 import { API } from '@/../constants';
+import ThemeButton from '@/base/Button';
 import axios from 'axios';
 import React, { FC, useState } from 'react';
 import { Form } from 'semantic-ui-react';
@@ -80,7 +81,7 @@ const ContactUs: FC<IProps> = (props) => {
           onChange={handleChange('message')}
         />
         {/* <Form.Checkbox label="I agree to the Terms and Conditions" /> */}
-        <Form.Button>Submit</Form.Button>
+        <ThemeButton>Submit</ThemeButton>
       </Form>
     </div>
   );

@@ -1,4 +1,5 @@
 import { API } from '@/../constants';
+import ThemeButton from '@/base/Button';
 import axios from 'axios';
 import React, { FC, useState } from 'react';
 import { Checkbox, Form, Label } from 'semantic-ui-react';
@@ -8,6 +9,16 @@ import { tw } from 'twind';
  * @author
  * @function @Conatctus
  **/
+
+const Volunteer_areas = [
+  'Special Events',
+  'Annual day Events',
+  'Daily Assembly',
+  'Substitute Teacher',
+  'Sports and Games',
+  'Parent Teacher Organization(PTO)',
+  'Put me where you need me to be',
+];
 
 const Volunteer = (props) => {
   const [volunteer, setVolunteer] = useState({
@@ -190,20 +201,20 @@ const Volunteer = (props) => {
             onChange={handleChangAddress('country')}
           />
         </Form.Group>
-        <Form.Group>
+        {/* <Form.Group>
           <Label>
             Are you over 18 <span style={{ color: 'red' }}>*</span>
           </Label>
           <Form.Radio label="Yes" checked={age ? true : false} onChange={(e) => handleRadio('age', true)} />
           <Form.Radio label="No" checked={age ? false : true} onChange={(e) => handleRadio('age', false)} />
-        </Form.Group>
-        <Form.TextArea
+        </Form.Group> */}
+        {/* <Form.TextArea
           required={true}
           label="Where did you hear about us"
           value={reference_from}
           onChange={handleChange('reference_from')}
-        />
-        <Form.Group>
+        /> */}
+        {/* <Form.Group>
           <Label>
             Is your company/Organization/Group Volunteering <span style={{ color: 'red' }}>*</span>
           </Label>
@@ -219,8 +230,8 @@ const Volunteer = (props) => {
             checked={company === false}
             onChange={(e) => handleRadio('company', false)}
           />
-        </Form.Group>
-        <Form.Group>
+        </Form.Group> */}
+        {/* <Form.Group>
           <Form.Input
             label="Company/Group/Origanizaion Name"
             value={volunteer.company_name}
@@ -233,12 +244,25 @@ const Volunteer = (props) => {
             value={volunteer.company_members}
             onChange={handleChange('company_members')}
           />
-        </Form.Group>
+        </Form.Group> */}
         {/* <Form.Group> */}
         <Label>Preferred Area to Volunteer.</Label>
         <br />
         <br />
-        <Checkbox
+        {Volunteer_areas.map((volunt, index) => {
+          return (
+            <div>
+              <Checkbox
+                label={{ children: volunt }}
+                checked={volunteer.volunteer_area === volunt ? true : false}
+                value={volunt}
+                onChange={(e, data) => handleRadio('volunteer_area', data.value)}
+              />
+              {/* &nbsp; */}
+            </div>
+          );
+        })}
+        {/* <Checkbox
           label={{ children: 'Gate/Door' }}
           checked={volunteer.volunteer_area === 'Gate/Door' ? true : false}
           value="Gate/Door"
@@ -250,8 +274,8 @@ const Volunteer = (props) => {
           checked={volunteer.volunteer_area === 'Retail/Sales'}
           onChange={(e, data) => handleRadio('volunteer_area', data.value)}
           value="Retail/Sales"
-        />
-        &nbsp;
+        /> */}
+        {/* &nbsp;
         <br />
         <br />
         <Checkbox
@@ -274,7 +298,7 @@ const Volunteer = (props) => {
           onChange={(e, data) => handleRadio('volunteer_area', data.value)}
           value="Put me where you need me to be"
         />
-        &nbsp;
+        &nbsp; */}
         <br />
         {/* </Form.Group> */}
         <Form.TextArea
@@ -284,7 +308,7 @@ const Volunteer = (props) => {
           onChange={handleChange('message')}
         />
         {/* <Form.Checkbox label="I agree to the Terms and Conditions" /> */}
-        <Form.Button>Submit</Form.Button>
+        <ThemeButton>Submit</ThemeButton>
       </Form>
     </div>
   );

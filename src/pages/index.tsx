@@ -24,7 +24,6 @@ const Headerstyle = styled.div`
 
 export const getServerSideProps = async () => {
   const preload = await axios.get(`${API}/home`);
-  console.log(preload);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
   if (preload.status !== 200) {

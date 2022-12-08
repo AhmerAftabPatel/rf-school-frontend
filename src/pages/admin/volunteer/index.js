@@ -19,8 +19,8 @@ const People = (props) => {
   const preload = () => {
     axios
       .get(
-        `${API}/volunteer?limit=${history.query.limit ? history.query.limit : "10"}&page=${
-          history.query.page ? history.query.page : "1"
+        `${API}/volunteer?limit=${history.query.limit ? history.query.limit : '10'}&page=${
+          history.query.page ? history.query.page : '1'
         }`,
       )
       .then((res) => {
@@ -55,7 +55,7 @@ const People = (props) => {
           pointing
           secondary
           onPageChange={handlePaginationChange}
-          totalPages={total_pages}
+          totalPages={total_pages / (history.query.limit ? history.query.limit : 10)}
         />
       </div>
     </StyledContainer>

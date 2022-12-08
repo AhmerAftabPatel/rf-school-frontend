@@ -1,25 +1,40 @@
+import { API } from '@/../constants';
+import BaseHeading from '@/base/BaseHeader';
+import HtmlDynamic from '@/base/htmlDynamic';
 import Footer from '@/components/footer';
 import ContactUs from '@/components/forms/conatctus';
 import Volunteer from '@/components/forms/volunteer';
 import Page from '@/components/page';
+import axios from 'axios';
 import { NextSeo } from 'next-seo';
 import React, { FC } from 'react';
 import { Grid, Header, Icon } from 'semantic-ui-react';
-import { tw,css } from 'twind/css';
-interface IProps {}
+import { tw, css } from 'twind/css';
 
-/**
- * @author
- * @function @Contact
- **/
- const headerstyle = css`
- padding : 20px 50px;
 
- @media only screen and (max-width: 600px) {
-     padding : 0;
- }
-`
-const Contact: FC<IProps> = (props) => {
+
+const headerstyle = css`
+  padding: 20px 50px;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+`;
+
+export const getServerSideProps = async () => {
+  const preload = await axios.get(`${API}/page?href=volunteer-signup`);
+  //   const fetched = await preload.data.json();
+  // console.log(fetched,"fetched")
+  if (preload.status !== 200) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: {volunteer : preload.data},
+  };
+};
+const Contact = ({volunteer}) => {
   return (
     <div>
       <div>
@@ -28,32 +43,10 @@ const Contact: FC<IProps> = (props) => {
           description="RF School - Comitted For Quality Education"
         />
         <Header heading="RF SCHOOL" description="Comitted for quality education." />
+
         <main className={tw(headerstyle)}>
-          <Grid stackable>
-            <Grid.Row columns={2}>
-              <Grid.Column width={6}>
-                <h1 className={tw('text-4xl font-bold')}>Volunteer Signup</h1>
-                <br />
-                <div className={tw('flex')}>
-                  <Icon size='big' name="mail" />
-                  &nbsp; rfschool@yahoo.com
-                </div>
-                <br />
-                <div className={tw('flex')}>
-                  <Icon size='big' name="phone" />
-                  &nbsp; 9491209995
-                </div>
-                <br />
-                <div className={tw('flex')}>
-                  <Icon size='big' name="whatsapp" />
-                  &nbsp; 9866459091
-                </div>
-              </Grid.Column>
-              <Grid.Column width={10}>
-                <Volunteer />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <HtmlDynamic data={volunteer}/>
+          <Volunteer />
         </main>
         <Footer />
       </div>

@@ -15,6 +15,7 @@ import withAuth from '../../helpers/withAuth';
 const edits = [
   { label: 'Dynamic Pages', icon: 'home', href: '/admin/dynamicpages' },
   { label: 'Contact Us', icon: 'phone square', href: '/admin/contact-us' },
+  { label: 'Volunteer Signups', icon: 'user', href: '/admin/volunteer' },
   { label: 'Banners', icon: 'home', href: '/admin/banners' },
   { label: 'People/Board Members', icon: 'home', href: '/admin/people' },
   { label: 'Announcements', icon: 'home', href: '/admin/announcements' },
