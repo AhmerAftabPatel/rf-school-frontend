@@ -200,14 +200,23 @@ const Admission = (props) => {
           <Form.Input
             fluid
             required={true}
-            label="Contact Number"
+            label="Telephone Number"
             type="number"
             value={admission.phone_number}
-            placeholder="Enter Contact Number"
+            placeholder="Enter Telephone Number"
             onChange={handleChange('phone_number')}
           />
         </Form.Group>
-        <Form.Group>
+        <Form.Group widths="equal">
+        <Form.Input
+            fluid
+            required={true}
+            label="Email"
+            type="number"
+            value={admission.email}
+            placeholder="Enter email address"
+            onChange={handleChange('email')}
+          />
           <Form.Field>
             <Label>Bus Facility Required</Label>
             <Form.Radio

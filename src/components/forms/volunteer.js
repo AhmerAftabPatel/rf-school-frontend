@@ -41,12 +41,23 @@ const Volunteer = (props) => {
     company_name: '',
     company_members: '',
     company_media: '',
-    volunteer_area: '',
+    volunteer_area: [],
   });
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const { first_name, last_name, email, phone_number, message, address, company, age, reference_from } = volunteer;
+  const {
+    first_name,
+    last_name,
+    email,
+    phone_number,
+    message,
+    address,
+    company,
+    age,
+    reference_from,
+    volunteer_area,
+  } = volunteer;
 
   const handleChange = (name) => (e) => {
     setVolunteer({ ...volunteer, [name]: e.target.value });
@@ -104,11 +115,15 @@ const Volunteer = (props) => {
   };
 
   const handleRadio = (name, value) => {
-    console.log(value, name);
-    setVolunteer({ ...volunteer, [name]: value });
+    let newValue = volunteer_area;
+    if (volunteer_area.indexOf(value) !== -1) {
+      newValue = newValue.filter((val) => val !== value)
+    } else {
+      newValue.push(value);
+    }
+    setVolunteer({ ...volunteer, [name]: newValue });
   };
 
-  console.log(volunteer.volunteer_area, 'volunteer.volunteer_area ');
   return (
     <div className={tw('py-4')}>
       <div>{success && <p>Form Submitted</p>}</div>
@@ -254,7 +269,7 @@ const Volunteer = (props) => {
             <div>
               <Checkbox
                 label={{ children: volunt }}
-                checked={volunteer.volunteer_area === volunt ? true : false}
+                checked={volunteer.volunteer_area.indexOf(volunt) !== -1 ? true : false}
                 value={volunt}
                 onChange={(e, data) => handleRadio('volunteer_area', data.value)}
               />
