@@ -39,9 +39,9 @@ const IntroAdmissions: FC<IProps> = ({admissions}) => {
                 
                 <List link size="large" celled>
                   <StyledList as="a">Download Application</StyledList>
-                  <StyledList as="a">Online Application</StyledList>
-                  <StyledList as="a">Rules and Regulations</StyledList>
-                  <StyledList as="a">School Fee</StyledList>
+                  <StyledList as="a" href="/admission-form">Online Application</StyledList>
+                  <StyledList as="a" href="/rules-and-regulations">Rules and Regulations</StyledList>
+                  <StyledList as="a" href="/school-fee">School Fee</StyledList>
                 </List>
               </div>
             </Grid.Column>
