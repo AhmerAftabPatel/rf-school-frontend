@@ -51,7 +51,7 @@ const Contact = ({ volunteer }) => {
           {/* <Grid.Row> */}
           {/* <Grid.Column width={10}> */}
           {/* <BaseHeading Heading={volunteer.heading} center/> */}
-          <HtmlDynamic data={volunteer} center/>
+          <HtmlDynamic data={volunteer}/>
           <StyledCard>
             <Volunteer />
           </StyledCard>

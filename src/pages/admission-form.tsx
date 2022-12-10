@@ -52,7 +52,7 @@ const Contact = ({ admission }) => {
           {/* <Grid.Row> */}
           {/* <Grid.Column width={10}> */}
           {/* <BaseHeading Heading={volunteer.heading} center/> */}
-          <HtmlDynamic data={admission} center/>
+          <HtmlDynamic data={admission}/>
           <StyledCard>
             <Admission />
           </StyledCard>
