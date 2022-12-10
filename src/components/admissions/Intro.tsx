@@ -16,12 +16,9 @@ interface IProps {
 const IntroAdmissions: FC<IProps> = ({admissions}) => {
   return (
     <>
-      <div>
+      <div style={{position : "relative"}}>
         {/* <h1 className={tw('text-4xl font-bold my-4')}>{Admission}</h1> */}
         {/* <h2 className={tw('text-4xl my-4')}>Welcome from the Admission Office </h2> */}
-        <Grid stackable>
-          <Grid.Row columns={2}>
-            <Grid.Column width={12}>
               <div>
                 <div className={tw('my-2 text-xl')}>
                   <HtmlDynamic data={admissions}/>
@@ -31,10 +28,8 @@ const IntroAdmissions: FC<IProps> = ({admissions}) => {
                   Begin your journey here! Apply Online. */}
                 </div>
               </div>
-            </Grid.Column>
 
-            <Grid.Column width={4}>
-              <div className={tw('my-4 flex text-blue-800')}>
+              <StyledDiv className={tw('my-4 flex text-blue-800')}>
                 {/* <div className={tw('h-full w-0.5 bg-gray-200')} /> */}
                 
                 <List link size="large" celled>
@@ -43,10 +38,7 @@ const IntroAdmissions: FC<IProps> = ({admissions}) => {
                   <StyledList as="a" href="/rules-and-regulations">Rules and Regulations</StyledList>
                   <StyledList as="a" href="/school-fee">School Fee</StyledList>
                 </List>
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+              </StyledDiv>
       </div>
     </>
   );
@@ -58,6 +50,15 @@ const StyledList = styled(List.Item)`&&&&&{
   cursor : pointer;
   :hover{
     color : red
+  }
+}`
+
+const StyledDiv = styled.div`{
+  position : absolute;
+  top : -10px;
+  right : 100px;
+  @media only screen and (max-width: 600px) {
+    position : relative;
   }
 }`
 
