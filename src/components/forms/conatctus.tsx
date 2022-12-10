@@ -51,6 +51,7 @@ const ContactUs: FC<IProps> = (props) => {
           <Form.Input
             fluid
             label="First name"
+            required={true}
             value={first_name}
             placeholder="First name"
             onChange={handleChange('first_name')}
@@ -59,6 +60,7 @@ const ContactUs: FC<IProps> = (props) => {
             fluid
             label="Last name"
             value={last_name}
+            required={true}
             placeholder="Last name"
             onChange={handleChange('last_name')}
           />
@@ -69,6 +71,7 @@ const ContactUs: FC<IProps> = (props) => {
             fluid
             label="Phone Number"
             value={phone_number}
+            required={true}
             type="number"
             placeholder="Phone Number"
             onChange={handleChange('phone_number')}
@@ -77,6 +80,7 @@ const ContactUs: FC<IProps> = (props) => {
         <Form.TextArea
           label="Message"
           value={message}
+          required={true}
           placeholder="Tell us more about you..."
           onChange={handleChange('message')}
         />
