@@ -73,6 +73,7 @@ const StyledCard = styled.div`
     border: 5px;
     width : 900px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border : 0.1px solid black;
   }
 `;
 

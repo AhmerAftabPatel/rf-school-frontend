@@ -68,7 +68,7 @@ const StyledCard = styled(Card)`&&&&&{
   padding : 0;
   margin : 0 auto;
   height : 150px;
-  
+  border-bottom : 4px solid rgb(0 0 0 0 / 10%);
 }`
 
 export default ToolsSection;

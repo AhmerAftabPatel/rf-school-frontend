@@ -9,7 +9,7 @@ import axios from 'axios';
 import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
 import React, { FC } from 'react';
-import { Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header, Icon, List } from 'semantic-ui-react';
 import { tw, css } from 'twind/css';
 import Admission from '@/components/forms/admission';
 
@@ -17,8 +17,8 @@ const headerstyle = css`
   padding: 20px 50px;
   display: flex;
   justify-content: center;
-  align-items :center;
-  flex-direction :column;
+  align-items: center;
+  flex-direction: column;
   @media only screen and (max-width: 600px) {
     padding: 0;
   }
@@ -52,7 +52,20 @@ const Contact = ({ admission }) => {
           {/* <Grid.Row> */}
           {/* <Grid.Column width={10}> */}
           {/* <BaseHeading Heading={volunteer.heading} center/> */}
-          <HtmlDynamic data={admission}/>
+          <div style={{ position: 'relative' }}>
+            <HtmlDynamic data={admission} />
+            <StyledDiv>
+              <List link size="large" celled>
+                <StyledList as="a">Download Application</StyledList>
+                <StyledList as="a" href="/rules-and-regulations">
+                  Rules and Regulations
+                </StyledList>
+                <StyledList as="a" href="/school-fee">
+                  School Fee
+                </StyledList>
+              </List>
+            </StyledDiv>
+          </div>
           <StyledCard>
             <Admission />
           </StyledCard>
@@ -72,8 +85,28 @@ const StyledCard = styled.div`
     padding: 14px;
     margin: 14px;
     border: 5px;
-    width : 900px;
+    width: 900px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border : 0.1px solid black;
+  }
+`;
+
+const StyledList = styled(List.Item)`
+  &&&&& {
+    color: blue;
+    display: flex;
+    cursor: pointer;
+    :hover {
+      color: red;
+    }
+  }
+`;
+
+const StyledDiv = styled.div`
+   {
+    position: absolute;
+    top: 10px;
+    right: 100px;
   }
 `;
 
