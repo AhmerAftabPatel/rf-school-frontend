@@ -114,6 +114,11 @@ const StyledHeader = styled.header`
     width: 100%;
     border-radius : 26px;
     min-height: calc(100vh - 26rem);
+
+    @media only screen and (max-width: 600px) {
+      min-height: 200px;
+      max-height: 200px;
+    }
   }
 `;
 

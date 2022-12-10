@@ -19,7 +19,7 @@ const IntroAdmissions: FC<IProps> = ({admissions}) => {
       <div>
         {/* <h1 className={tw('text-4xl font-bold my-4')}>{Admission}</h1> */}
         {/* <h2 className={tw('text-4xl my-4')}>Welcome from the Admission Office </h2> */}
-        <Grid>
+        <Grid stackable>
           <Grid.Row columns={2}>
             <Grid.Column width={12}>
               <div>
