@@ -6,6 +6,7 @@ const AdmissionsList = ({ admission }) => {
       <Table celled>
         <Table.Header>
           <Table.Row>
+          <Table.HeaderCell>Date</Table.HeaderCell>
           <Table.HeaderCell>Student Full Name</Table.HeaderCell>
             <Table.HeaderCell>DoB</Table.HeaderCell>
             <Table.HeaderCell>First Language</Table.HeaderCell>
@@ -25,6 +26,7 @@ const AdmissionsList = ({ admission }) => {
           {admission && admission.map((admiss, index) => {
             return (
               <Table.Row key={index}>
+                <Table.Cell>{admiss?.createdAt}</Table.Cell>
                 <Table.Cell>{admiss?.full_name}</Table.Cell>
                 <Table.Cell>{admiss?.DoB}</Table.Cell>
                 <Table.Cell>{admiss?.first_language}</Table.Cell>
