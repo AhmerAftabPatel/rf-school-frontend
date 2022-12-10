@@ -86,8 +86,9 @@ const StyledCard = styled.div`
     margin: 14px;
     border: 5px;
     width: 900px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border : 2px solid gray;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    // box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    // border : 2px solid gray;
   }
 `;
 
