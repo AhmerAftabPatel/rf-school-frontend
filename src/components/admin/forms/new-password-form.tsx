@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { authenticate } from '../../../helpers/auth';
 import BaseHeading from '@/base/BaseHeader';
 import ThemeButton from '@/base/Button';
-const FormExampleForm = () => {
+const NewPasswordForm = () => {
   const history = useRouter();
   const [values, setValues] = useState({
     email: '',
@@ -18,15 +18,15 @@ const FormExampleForm = () => {
   };
   const onSubmit = () => {
     axios
-      .post(`${API}/signin`, values)
+      .post(`${API}/new-password`, values)
       .then((res) => {
-        authenticate(res.data, () => {
-          history.push('/admin');
-        });
+        console.log(res);
+        alert("Your password has been reset, Please login to continue");
+        history.push("/admin/Auth/login")
       })
       .catch((err) => {
         console.log(err);
-        alert("Invalid Credentials")
+        alert(err)
       });
   };
   return (
@@ -34,21 +34,20 @@ const FormExampleForm = () => {
       <br />
       <br />
       <br />
-      <BaseHeading Heading='Login as Admin' size='small'/>
+      <BaseHeading Heading='New Password' size='small'/>
       <Form onSubmit={onSubmit}>
         <Form.Field>
-          <label>Email</label>
-          <input placeholder="Email" type="email" onChange={handleChange('email')} required/>
+          <label>New Password</label>
+          <input placeholder="Password" type="password" onChange={handleChange('password')} required/>
         </Form.Field>
         <Form.Field>
-          <label>Password</label>
-          <input placeholder="password" type="password" onChange={handleChange('password')} required/>
+          <label>Confirm New Password</label>
+          <input placeholder="Confirm Password" type="password" onChange={handleChange('password2')} required/>
         </Form.Field>
-        <ThemeButton>Sign In</ThemeButton>
-        <ThemeButton onClick ={() => history.push("/admin/Auth/forget-password")}>Forgot Password</ThemeButton>
+        <ThemeButton>Submit</ThemeButton>
       </Form>
     </>
   );
 };
 
-export default FormExampleForm;
+export default NewPasswordForm;

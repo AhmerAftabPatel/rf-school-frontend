@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { authenticate } from '../../../helpers/auth';
 import BaseHeading from '@/base/BaseHeader';
 import ThemeButton from '@/base/Button';
-const FormExampleForm = () => {
+const ForgetPasswordForm = () => {
   const history = useRouter();
   const [values, setValues] = useState({
     email: '',
@@ -18,15 +18,14 @@ const FormExampleForm = () => {
   };
   const onSubmit = () => {
     axios
-      .post(`${API}/signin`, values)
+      .post(`${API}/forget-password`, values)
       .then((res) => {
-        authenticate(res.data, () => {
-          history.push('/admin');
-        });
+        console.log(res);
+        alert("Please click on the verification link sent to your email address.");
       })
       .catch((err) => {
         console.log(err);
-        alert("Invalid Credentials")
+        alert(err?.response?.data?.error)
       });
   };
   return (
@@ -34,21 +33,16 @@ const FormExampleForm = () => {
       <br />
       <br />
       <br />
-      <BaseHeading Heading='Login as Admin' size='small'/>
+      <BaseHeading Heading='Forgot Password' size='small'/>
       <Form onSubmit={onSubmit}>
         <Form.Field>
           <label>Email</label>
-          <input placeholder="Email" type="email" onChange={handleChange('email')} required/>
+          <input placeholder="Password" type="email" onChange={handleChange('email')} required/>
         </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input placeholder="password" type="password" onChange={handleChange('password')} required/>
-        </Form.Field>
-        <ThemeButton>Sign In</ThemeButton>
-        <ThemeButton onClick ={() => history.push("/admin/Auth/forget-password")}>Forgot Password</ThemeButton>
+        <ThemeButton>Submit</ThemeButton>
       </Form>
     </>
   );
 };
 
-export default FormExampleForm;
+export default ForgetPasswordForm;

@@ -66,7 +66,6 @@ const EditBox: FC<IProps> = ({ values, setValues, loading, setNewValues, newValu
   const handleChangeImage = name => (e) => {
     setNewValues({ ...newValues, [name]: e.target.files[0] });
   };
-console.log(values,"uhygtfr")
   return (
     <StyledDiv>
       <BreadcrumbSection
