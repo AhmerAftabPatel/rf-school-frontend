@@ -68,7 +68,7 @@ const AdmissionsList = ({ admission, preload }) => {
                   <Table.Cell>{admiss?.bus_required ? 'Yes' : 'No'}</Table.Cell>
                   <Table.Cell>{admiss?.message}</Table.Cell>
                   <Table.Cell>
-                    <Icon name="trash" onClick={() => OnDelete(admiss._id)} />
+                    <Icon name="trash" onClick={() => onDelete(admiss._id)} />
                   </Table.Cell>
                 </Table.Row>
               );
