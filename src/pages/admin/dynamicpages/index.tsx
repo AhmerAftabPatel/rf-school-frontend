@@ -72,8 +72,8 @@ const AdminPages = (props) => {
     // details.forEach((detail) => {
     formData.set('bannerId', values._id);
     for (var key in newValues) {
-      if(key !== "flyer" && key !== "bannner" ?  newValues[key] : true){
-      formData.set(key, newValues[key]);
+      if (key !== 'flyer' && key !== 'bannner' ? newValues[key] : true) {
+        formData.set(key, newValues[key]);
       }
     }
     axios
@@ -113,8 +113,8 @@ const AdminPages = (props) => {
     formData.set('href', newValues.page.toLowerCase().replace(' ', '-'));
     // details.forEach((detail) => {
     for (var key in newValues) {
-      if(newValues[key]){
-      formData.set(key, newValues[key]);
+      if (newValues[key]) {
+        formData.set(key, newValues[key]);
       }
     }
     axios
@@ -123,7 +123,7 @@ const AdminPages = (props) => {
         setSuccess(true);
         preload();
         handleEditClose();
-        setAddnewOpen(false)
+        setAddnewOpen(false);
         setLoading(false);
       })
       .catch((err) => {
@@ -152,10 +152,28 @@ const AdminPages = (props) => {
   const onAddClick = (selectedPages) => {
     setAddnewOpen(true);
     setTimeout(() => {
-      window.scrollTo(0,1000);
-    },200)
-   
+      window.scrollTo(0, 1000);
+    }, 200);
+
     // alert('Not yet integrated, will be done in few hours...');
+  };
+
+  const handlChangeForm = (e) => {
+    if (e.target.files[0].type !== 'application/pdf') {
+      alert('Invalid file format, only pdf is allowed...');
+    } else {
+      const formData = new FormData();
+      formData.set('file', e.target.files[0]);
+      axios
+        .post(`${API}/admissionform`, formData)
+        .then((res) => {
+          console.log(res);
+          alert('Form Updated');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -219,9 +237,12 @@ const AdminPages = (props) => {
                     {error && activeIndex === index && <StyledError>{error}</StyledError>}
                     <Button.Group compact>
                       {!open && <Button content="Edit" onClick={() => handleEdit(page)} color={'blue'} />}
-                      {!open && (page.heading === 'News and Events' || selectedPage === 'Parents & Students' || selectedPage === 'Students Corner') && (
-                        <Button content="Delete" onClick={() => handleDelete(page._id)} color={'red'} />
-                      )}
+                      {!open &&
+                        (page.heading === 'News and Events' ||
+                          selectedPage === 'Parents & Students' ||
+                          selectedPage === 'Students Corner') && (
+                          <Button content="Delete" onClick={() => handleDelete(page._id)} color={'red'} />
+                        )}
                       {!open && page.folder && (
                         <Button
                           content="View Gallery"
@@ -237,9 +258,41 @@ const AdminPages = (props) => {
               );
             }
           })}
-          {(selectedPage === 'News and Events' || selectedPage === 'Parents & Students' || selectedPage === 'Students Corner') && (
+          {(selectedPage === 'News and Events' ||
+            selectedPage === 'Parents & Students' ||
+            selectedPage === 'Students Corner') && (
             <Styledbutton onClick={() => onAddClick(selectedPage)}>Add {selectedPage} + </Styledbutton>
-           )}
+          )}
+
+          {selectedPage === 'Admissions' && (
+            <StyledDiv highlight={activeIndex === pages.length + 1}>
+              <Accordion.Title active>
+                {success && activeIndex === 4 && <StyledSuccess>Changes Saved!!</StyledSuccess>}
+                {error && activeIndex === 4 && <StyledError>{error}</StyledError>}
+                <Icon name="dropdown" />
+                <BreadcrumbSection
+                  sections={[
+                    { key: 0, content: 'Admissions' },
+                    { key: 1, content: 'Admissions-enrollment-form' },
+                  ]}
+                />
+                {/* {page.heading} - {page.page} */}
+              </Accordion.Title>
+              <Accordion.Content active>
+                <a href={`${s3_url + 'banners/admissions-enrollment-form.pdf'}`}>View Form</a>
+                <hr />
+                <label>Edit Admissions Form</label> <br/>
+                <input type="file" onChange={handlChangeForm} placeholder="Edit admission form"/>
+                <Divider />
+                {success && activeIndex === pages.length + 1 && <StyledSuccess>Changes Saved!!</StyledSuccess>}
+                {error && activeIndex === pages.length + 1 && <StyledError>{error}</StyledError>}
+                <Button.Group compact>
+                  {open && <Button content="Cancel" onClick={() => handleEditClose()} color={'red'} />}
+                  {open && <Button content="Save" color="green" onClick={() => handleSave()} />}
+                </Button.Group>
+              </Accordion.Content>
+            </StyledDiv>
+          )}
         </Accordion>
       )}
 

@@ -4,6 +4,7 @@ import { Grid, List } from 'semantic-ui-react';
 import { tw } from 'twind';
 import styled from 'styled-components'
 import {admissions_office} from  "../../../strings/admissionsstring"
+import { s3_url } from '@/../constants';
 interface IProps {
   admissions : { page: string; description: string; heading: string; banner: string }
 }
@@ -33,7 +34,7 @@ const IntroAdmissions: FC<IProps> = ({admissions}) => {
                 {/* <div className={tw('h-full w-0.5 bg-gray-200')} /> */}
                 
                 <List link size="large" celled>
-                  <StyledList as="a">Download Application</StyledList>
+                  <StyledList as="a" href={`${s3_url + 'banners/admissions-enrollment-form.pdf'}`}>Download Application</StyledList>
                   <StyledList as="a" href="/admission-form">Online Application</StyledList>
                   <StyledList as="a" href="/rules-and-regulations">Rules and Regulations</StyledList>
                   <StyledList as="a" href="/school-fee">School Fee</StyledList>
