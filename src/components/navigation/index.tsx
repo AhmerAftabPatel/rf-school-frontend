@@ -51,8 +51,8 @@ const links = [
   //   href: `/academics`,
   // },
   {
-    page: `Admissions`,
-    href: `/admissions`,
+    page: `Academics`,
+    href: `/academics-overview`,
   },
   {
     page: `Careers`,

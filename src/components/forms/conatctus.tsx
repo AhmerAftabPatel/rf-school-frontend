@@ -66,7 +66,7 @@ const ContactUs: FC<IProps> = (props) => {
           />
         </Form.Group>
         <Form.Group widths="equal">
-          <Form.Input fluid label="Email" type='email' value={email} placeholder="Email" onChange={handleChange('email')} />{' '}
+          <Form.Input fluid label="Email" type='email' value={email} placeholder="Email" onChange={handleChange('email')} required={true}/>
           <Form.Input
             fluid
             label="Phone Number"

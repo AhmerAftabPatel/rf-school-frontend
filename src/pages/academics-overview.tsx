@@ -20,7 +20,7 @@ import axios from 'axios';
 import { API } from '@/../constants';
 import HtmlDynamic from '@/base/htmlDynamic';
 export const getServerSideProps = async () => {
-  const preload = await axios.get(`${API}/page?href=admissions`);
+  const preload = await axios.get(`${API}/page?href=academics-overview`);
   const preload1 = await axios.get(`${API}/pages?page=Curriculum`);
   if (preload.status !== 200) {
     return {

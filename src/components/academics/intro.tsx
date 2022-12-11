@@ -19,10 +19,10 @@ export const Intro: FC<IProps> = ({heading,description}) => {
       <hr /> */}
       <br />
       <h1 className={tw('text-4xl font-semibold')}>We are here to help</h1>
-      <div className={tw('text-xl py-4')}>
-        <p>
-          {description}
-        </p>
+      <div className={tw('text-xl py-2')}>
+        {/* <p> */}
+        <div dangerouslySetInnerHTML={{ __html: description }}></div>
+        {/* </p> */}
       </div>
     </div>
   );
