@@ -21,6 +21,11 @@ const AdminContacts = (props) => {
   const [contacts, setContacts] = useState([]);
   const [total_pages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [contactDetails, setContactsDetails] = useState({
+    email: '',
+    telephone: '',
+    whatsapp: '',
+  });
   const preload = () => {
     axios
       .get(
@@ -37,18 +42,30 @@ const AdminContacts = (props) => {
       });
   };
 
-  const onDelete = (id) => {
-    if(confirm("Are you sure?")){
+  const getContacts = () => {
     axios
-      .delete(`${API}/contact?contactId=${id}`)
+      .get(`${API}/contact-details`)
       .then((res) => {
         console.log(res);
-        preload()
+        setContactsDetails(res.data);
       })
       .catch((err) => {
         console.log(err);
-        alert(err);
       });
+  };
+
+  const onDelete = (id) => {
+    if (confirm('Are you sure?')) {
+      axios
+        .delete(`${API}/contact?contactId=${id}`)
+        .then((res) => {
+          console.log(res);
+          preload();
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err);
+        });
     }
   };
   const handlePaginationChange = (e, { activePage }) => {
@@ -57,7 +74,25 @@ const AdminContacts = (props) => {
   };
   useEffect(() => {
     preload();
+    getContacts();
   }, []);
+
+  const handleChange = (name) => (e) => {
+    setContactsDetails({ ...contactDetails, [name]: e.target.value });
+  };
+
+  const onFormSubmit = () => {
+    axios
+      .post(`${API}/contact-details`, contactDetails)
+      .then((res) => {
+        console.log(res);
+        alert('changes saved');
+        getContacts();
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <StyledContainer>
@@ -65,6 +100,17 @@ const AdminContacts = (props) => {
       <Icon name="arrow left" color="blue" style={{ cursor: 'pointer' }} onClick={() => history.back()} />
       <div>
         <BaseHeading Heading="Contacts" size="large" />
+      </div>
+      <div>
+        <form onSubmit={onFormSubmit}>
+          <label>Email : </label>
+          <input type="text" value={contactDetails.email} onChange={handleChange('email')} />
+          <label>Telephone : </label>
+          <input type="text" value={contactDetails.telephone} onChange={handleChange('telephone')} />
+          <label>Whatsapp : </label>
+          <input type="text" value={contactDetails.whatsapp} onChange={handleChange('whatsapp')} />
+          <button type="submit">save</button>
+        </form>
       </div>
       <Table celled>
         <Table.Header>
@@ -79,32 +125,33 @@ const AdminContacts = (props) => {
         </Table.Header>
 
         <Table.Body>
-          {contacts && contacts.map((contact, index) => {
-            return (
-              <>
-                <Table.Row>
-                  <Table.Cell>{contact?.createdAt.slice(0,10)}</Table.Cell>
-                  <Table.Cell>{contact?.first_name + contact?.last_name}</Table.Cell>
-                  <Table.Cell>{contact?.email}</Table.Cell>
-                  <Table.Cell>{contact?.phone_number}</Table.Cell>
-                  <Table.Cell>{contact?.message}</Table.Cell>
-                  <Table.Cell>
-                    <Icon name="trash" onClick={() => onDelete(contact._id)} />
-                  </Table.Cell>
-                  {/* <StyledContact key={index}> */}
-                  {/* <div>{index + 1}. &nbsp;</div>
+          {contacts &&
+            contacts.map((contact, index) => {
+              return (
+                <>
+                  <Table.Row>
+                    <Table.Cell>{contact?.createdAt.slice(0, 10)}</Table.Cell>
+                    <Table.Cell>{contact?.first_name + contact?.last_name}</Table.Cell>
+                    <Table.Cell>{contact?.email}</Table.Cell>
+                    <Table.Cell>{contact?.phone_number}</Table.Cell>
+                    <Table.Cell>{contact?.message}</Table.Cell>
+                    <Table.Cell>
+                      <Icon name="trash" onClick={() => onDelete(contact._id)} />
+                    </Table.Cell>
+                    {/* <StyledContact key={index}> */}
+                    {/* <div>{index + 1}. &nbsp;</div>
               <div>
                 <StyledDate>{moment(contact.createdAt).format('Do-MMM-YYYY')}</StyledDate>
                 <br />
                 {contact.first_name} &nbsp; - &nbsp; {contact.last_name} &nbsp; - &nbsp; {contact.email} <br />
                 {contact.message} <br /> <br />
               </div> */}
-                  {/* </StyledContact> */}
-                </Table.Row>
-                {/* <Divider /> */}
-              </>
-            );
-          })}
+                    {/* </StyledContact> */}
+                  </Table.Row>
+                  {/* <Divider /> */}
+                </>
+              );
+            })}
           {/* <Table.Row>
             <Table.Cell>No Name Specified</Table.Cell>
             <Table.Cell>Unknown</Table.Cell>

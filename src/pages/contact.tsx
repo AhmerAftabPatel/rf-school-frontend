@@ -1,24 +1,41 @@
+import { API } from '@/../constants';
 import Footer from '@/components/footer';
 import ContactUs from '@/components/forms/conatctus';
 import Page from '@/components/page';
+import axios from 'axios';
 import { NextSeo } from 'next-seo';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Grid, Header, Icon } from 'semantic-ui-react';
-import { tw,css } from 'twind/css';
+import { tw, css } from 'twind/css';
 interface IProps {}
 
 /**
  * @author
  * @function @Contact
  **/
- const headerstyle = css`
- padding : 20px 50px;
+const headerstyle = css`
+  padding: 20px 50px;
 
- @media only screen and (max-width: 600px) {
-     padding : 0;
- }
-`
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+`;
 const Contact: FC<IProps> = (props) => {
+  const [contacts, setContacts] = useState({ email: '', telephone: '', whatsapp: '' });
+  const preload = () => {
+    axios
+      .get(`${API}/contact-details`)
+      .then((res) => {
+        setContacts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    preload();
+  }, []);
   return (
     <div>
       <div>
@@ -34,18 +51,18 @@ const Contact: FC<IProps> = (props) => {
                 <h1 className={tw('text-4xl font-bold')}>Get in touch</h1>
                 <br />
                 <div className={tw('flex')}>
-                  <Icon size='big' name="mail" />
-                  &nbsp; rfschool@yahoo.com
+                  <Icon size="big" name="mail" />
+                  &nbsp; {contacts.email}
                 </div>
                 <br />
                 <div className={tw('flex')}>
-                  <Icon size='big' name="phone" />
-                  &nbsp; 9491209995
+                  <Icon size="big" name="phone" />
+                  &nbsp; {contacts.telephone}
                 </div>
                 <br />
                 <div className={tw('flex')}>
-                  <Icon size='big' name="whatsapp" />
-                  &nbsp; 9866459091
+                  <Icon size="big" name="whatsapp" />
+                  &nbsp; {contacts.whatsapp}
                 </div>
               </Grid.Column>
               <Grid.Column>
