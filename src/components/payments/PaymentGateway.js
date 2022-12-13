@@ -61,7 +61,7 @@ const Payments = () => {
             transactionamount: res.data.details.transactionamount,
           });
           setPaymentSuccessOpen(true);
-          history.push(`/payment-status?id=${paymentValues.transactionid}`);
+          history.push(`/payment-status?id=${res.data.details.transactionid}`);
         })
         .catch((e) => {
           alert(e.response && e.response.data && e.response.data.error);
