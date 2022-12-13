@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Header } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const Headerstyle = styled.div`
    {
@@ -21,6 +22,7 @@ const Headerstyle = styled.div`
 `;
 
 const Payments = () => {
+  const history = useRouter();
   const [type, setType] = useState('');
   const [PaymentSuccessOpen, setPaymentSuccessOpen] = useState(false);
   const [paymentValues, setPaymentValues] = useState({
@@ -59,6 +61,7 @@ const Payments = () => {
             transactionamount: res.data.details.transactionamount,
           });
           setPaymentSuccessOpen(true);
+          history.push(`/payment-status?id=${paymentValues.transactionid}`);
         })
         .catch((e) => {
           alert(e.response && e.response.data && e.response.data.error);
@@ -116,12 +119,6 @@ const Payments = () => {
     document.body.appendChild(script);
   }, []);
 
-  useEffect(() => {
-    if (PaymentSuccessOpen) {
-      alert('Payment success, you will recieve an email shortly...');
-      history.push(`/payment-status?id=${paymentValues.transactionid}`);
-    }
-  }, [PaymentSuccessOpen]);
 
   return (
     <Headerstyle>
