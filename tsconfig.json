@@ -19,5 +19,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/base/htmlDynamic.js", "src/base/BaseHeader.js", "src/pages/admin/contact-us/index.js"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/base/htmlDynamic.js", "src/base/BaseHeader.js", "src/pages/admin/contact-us/index.js", "src/components/payments/PaymentGateway.js", "src/pages/admin/payments/index.js"]
 }
