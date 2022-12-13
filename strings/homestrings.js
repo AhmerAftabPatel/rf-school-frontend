@@ -45,7 +45,7 @@ module.exports = {
   ],
   home_tools : [
     {label : "Online Admission Form", href : "/admission-form",icon : "/images/icons/checklist.png", color : "red"},
-    {label : "Online Tuition Payment", href : "",icon : "/images/icons/cashless-payment.png", color : "blue"},
+    {label : "Online Tuition Payment", href : "/online-tuition-payment",icon : "/images/icons/cashless-payment.png", color : "blue"},
     {label : "Volunteer Sign Up", href : "/volunteer-signup" ,icon : "/images/icons/charity.png",color : "green"},
     {label : "Photo Gallery", href : "gallery?type=Photo",icon : "/images/icons/gallery.png",color : "yellow" }
   ]
