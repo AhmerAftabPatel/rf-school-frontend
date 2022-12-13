@@ -1,6 +1,17 @@
+import { API } from '@/../constants';
+import axios from 'axios';
 import { Icon, Table } from 'semantic-ui-react';
 import styled from 'styled-components'
-const PaymentsList = ({ payments }) => {
+const PaymentsList = ({ payments,preload }) => {
+
+  const onDelete = (id) => {
+    axios.delete(`${API}/transaction?id=${id}`).then((res) => {
+      console.log(res);
+      preload()
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     <StyledDiv>
       <Table compact='very' size='small' celled collapsing>
@@ -15,6 +26,7 @@ const PaymentsList = ({ payments }) => {
             <Table.HeaderCell>Transcation id</Table.HeaderCell>
             <Table.HeaderCell>Status</Table.HeaderCell>
             <Table.HeaderCell>Personal Message</Table.HeaderCell>
+            <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -42,6 +54,7 @@ const PaymentsList = ({ payments }) => {
                   <Table.Cell>{volunt?.details?.transactionid}</Table.Cell>
                   <Table.Cell positive={volunt.status === 'SUCCESS'} negative ={volunt.status !== 'SUCCESS'}>{volunt?.status}</Table.Cell>
                   <Table.Cell collapsing>{volunt?.message}</Table.Cell>
+                  <Table.Cell collapsing><Icon onClick={() => onDelete(volunt._id)} name='trash' color='red'/></Table.Cell>
                 </Table.Row>
               );
             })}

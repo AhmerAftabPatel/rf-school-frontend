@@ -46,7 +46,7 @@ const AllPayments = (props) => {
       <div>
         <BaseHeading Heading="All Payment" size="large" />
       </div>
-      <PaymensList payments={payments} />
+      <PaymensList payments={payments} preload={preload}/>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Pagination
           activePage={currentPage}
