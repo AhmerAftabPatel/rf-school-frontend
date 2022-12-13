@@ -119,7 +119,7 @@ const Payments = () => {
   useEffect(() => {
     if (PaymentSuccessOpen) {
       alert('Payment success, you will recieve an email shortly...');
-      history.push(`payment-status?id=${paymentValues.transactionid}`);
+      history.push(`/payment-status?id=${paymentValues.transactionid}`);
     }
   }, [PaymentSuccessOpen]);
 
