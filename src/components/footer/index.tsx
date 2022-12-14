@@ -46,7 +46,7 @@ const Footer = () => (
                   <Link passHref href={'/faculty'}>
                     <List.Item style ={{color : "white"}}>Faculty</List.Item>
                   </Link>
-                  <Link passHref href={'/Admissions'}>
+                  <Link passHref href={'/academics-overview'}>
                     <List.Item style ={{color : "white"}}>Admissions</List.Item>
                   </Link>
                   <Link passHref href={'/privacy-policy'}>

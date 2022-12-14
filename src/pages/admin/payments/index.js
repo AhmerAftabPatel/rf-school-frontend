@@ -32,7 +32,7 @@ const AllPayments = (props) => {
       });
   };
   const handlePaginationChange = (e, { activePage }) => {
-    history.push({ query: { limit: 1, page: activePage } });
+    history.push({ query: { limit: 10, page: activePage } });
     setCurrentPage(activePage);
   };
   useEffect(() => {

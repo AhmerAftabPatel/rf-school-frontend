@@ -173,7 +173,7 @@ const Tuition = ({ type, submit }) => {
         <Form.TextArea
           fluid
           required={false}
-          label="Anything that you would like us to know?"
+          label="Enter Student Information"
           type="text"
           value={values.message}
           placeholder="Start typing here..."

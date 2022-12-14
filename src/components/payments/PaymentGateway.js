@@ -23,7 +23,7 @@ const Headerstyle = styled.div`
 
 const Payments = () => {
   const history = useRouter();
-  const [type, setType] = useState('');
+  const [type, setType] = useState('TUITION');
   const [PaymentSuccessOpen, setPaymentSuccessOpen] = useState(false);
   const [paymentValues, setPaymentValues] = useState({
     type: '',
@@ -65,6 +65,7 @@ const Payments = () => {
         })
         .catch((e) => {
           alert(e.response && e.response.data && e.response.data.error);
+          history.reload()
         });
     },
     prefill: {
@@ -122,8 +123,9 @@ const Payments = () => {
 
   return (
     <Headerstyle>
-      <BaseHeading Heading={'Secure Payment'} center />
-      <StyledCard>{type ? SwitchTypes(type) : <SelectType SelectType={SelectTypeOption} />}</StyledCard>
+      {/* <BaseHeading Heading={'Secure Payment'} center /> */}
+      <Tuition type={type} submit={SubmitPayment} />
+      {/* <StyledCard>{type ? SwitchTypes(type) : <SelectType SelectType={SelectTypeOption} />}</StyledCard> */}
     </Headerstyle>
   );
 };
