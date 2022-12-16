@@ -56,7 +56,7 @@ const links = [
   },
   {
     page: `Careers`,
-    href: `/`,
+    href: `/careers`,
   },
   {
     page: `Gallery`,
