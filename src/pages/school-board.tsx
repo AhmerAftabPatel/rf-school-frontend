@@ -27,7 +27,7 @@ interface IProps {}
 }
 `;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const preload = await axios.get(`${API}/page?href=school-board`);
   console.log(preload);
   //   const fetched = await preload.data.json();

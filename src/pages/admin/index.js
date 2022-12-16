@@ -18,6 +18,7 @@ const edits = [
   { label: 'Volunteer Signups', icon: 'user', href: '/admin/volunteer' },
   { label: 'Admmissions List', icon: 'user', href: '/admin/admissions' },
   { label: 'Payments List', icon: 'user', href: '/admin/payments' },
+  { label: 'Jobs List', icon: 'user', href: '/admin/jobs' },
   { label: 'Banners', icon: 'home', href: '/admin/banners' },
   { label: 'People/Board Members', icon: 'home', href: '/admin/people' },
   { label: 'Announcements', icon: 'home', href: '/admin/announcements' },
