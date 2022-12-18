@@ -87,6 +87,7 @@ const Careers = () => {
       <BreadcrumbSection sections={sections} />
       <BaseHeading Heading={'Jobs'} size="small" /> &nbsp;
       <ThemeButton onClick={() => setOpen(true)}>Post New Job</ThemeButton>
+      <ThemeButton onClick={() => history.push("/admin/jobs/all")}>View All Candidates</ThemeButton>
       <br />
       <br />
       <Accordion styled fluid>
@@ -136,6 +137,12 @@ const Careers = () => {
                 <Accordion.Title active={activeIndex === index} index={index} onClick={handleClick}>
                   <Icon name="dropdown" />
                   {job.title}
+                  <Label
+                    color={job.status ? 'green' : 'red'}
+                    circular
+                    size="mini"
+                    content={job.status ? 'Live' : 'Job CLosed'}
+                  />
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === index}>
                   <Divider />

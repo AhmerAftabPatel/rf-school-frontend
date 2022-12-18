@@ -22,7 +22,7 @@ const Careers = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const preload = () => {
     axios
-      .get(`${API}/jobs`)
+      .get(`${API}/jobs?type=live`)
       .then((res) => {
         setJobs(res.data.jobs);
       })

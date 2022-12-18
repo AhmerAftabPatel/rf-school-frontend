@@ -17,21 +17,21 @@ const Payment_Types = [
 
 const Tuition = ({ type, submit }) => {
   const [values, setValues] = useState({
-    full_name: 'Ahmer Aftab',
-    student_name: 'Shadab',
+    full_name: '',
+    student_name: '',
     address: {
-      street_address_1: 'swdecrfvg',
+      street_address_1: '',
       street_address_2: '',
-      city: 'Hyderabad',
-      state: 'Telangana',
-      zip_code: '500048',
-      country: 'India',
+      city: '',
+      state: '',
+      zip_code: '',
+      country: '',
     },
-    phone_number: '8106938402',
-    message: 'This payment if for a random student',
-    email: 'ahmerpatel123@gmail.com',
+    phone_number: '',
+    message: '',
+    email: '',
     type_of_payment: type,
-    amount: 10,
+    amount: 1000,
   });
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);

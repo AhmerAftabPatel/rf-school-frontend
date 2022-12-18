@@ -16,7 +16,7 @@ const Jobs = () => {
   const [candidates, setCandidates] = useState([]);
   const preload = (id) => {
     axios
-      .get(`${API}/candidates?id=${id}`)
+      .get(`${API}/candidates${id !== 'all' ? `?id=${id}` : ''}`)
       .then((res) => {
         setCandidates(res.data.candidates);
       })
@@ -43,13 +43,18 @@ const Jobs = () => {
       <BreadcrumbSection sections={sections} />
       <BaseHeading Heading={`${history.query.name}-Candidates`} size="small" />
       <br />
-      <Table>
+      <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Full Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell>Phone Number</Table.HeaderCell>
             <Table.HeaderCell>Resume</Table.HeaderCell>
+            <Table.HeaderCell>Position</Table.HeaderCell>
+            <Table.HeaderCell>Current Salary</Table.HeaderCell>
+            <Table.HeaderCell>Total experience</Table.HeaderCell>
+            <Table.HeaderCell>Address</Table.HeaderCell>
+            <Table.HeaderCell>Message</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -63,6 +68,15 @@ const Jobs = () => {
                   <a href={s3_url + '/' + candidate?.resume}>View Resume</a>
                   {candidate.phone_name}
                 </Table.Cell>
+                <Table.Cell positive={candidate?.job_id?.status} negative={!candidate?.job_id?.status}>
+                  {candidate?.job_id?.title}
+                </Table.Cell>
+                <Table.Cell>{candidate?.current_salary}</Table.Cell>
+                <Table.Cell>{candidate?.total_experience}</Table.Cell>
+                <Table.Cell>
+                  {candidate?.address && candidate?.address?.street_address_1 + ',' + candidate?.address?.city + ',' + candidate?.address?.country}
+                </Table.Cell>
+                <Table.Cell collapsing>{candidate?.message}</Table.Cell>
               </Table.Row>
             );
           })}

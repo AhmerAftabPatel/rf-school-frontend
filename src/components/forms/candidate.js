@@ -128,7 +128,7 @@ const CandidateApply = ({ job }) => {
             placeholder="Enter email address"
             onChange={handleChange('email')}
           />
-          <Form.Field>
+          <Form.Field required={true}>
             <label>Upload Resume (pdf, docx, doc)</label>
             <input type="file" name="resume" onChange={handleResumeChange} />
           </Form.Field>
@@ -142,7 +142,7 @@ const CandidateApply = ({ job }) => {
             onChange={handleChange('current_salary')}
           />
           <Form.Input
-            label="Total Experience"
+            label="Total Experience in Months"
             type="text"
             value={candidate.total_experience}
             placeholder="Enter Your Total Experience in Months..."
@@ -150,7 +150,7 @@ const CandidateApply = ({ job }) => {
           />
         </Form.Group>
         <Form.Group widths={2}>
-          <Form.Input label="Position Applying for" type="text" value={jobTitle} />
+          <Form.Input label="Position Applying for" type="text" onChange={handleChange("position_applied_for")} value={jobTitle} />
           <Form.Field></Form.Field>
         </Form.Group>
         <Form.TextArea
