@@ -58,7 +58,7 @@ const Careers = () => {
     <Headerstyle>
       {page && <HtmlDynamic data={page} />}
       <br />
-      <BaseHeading Heading={'Faculty'} size="small" />
+      <BaseHeading Heading={'Faculty'} size="tiny" />
       <Accordion styled fluid>
         {jobs.map((job, index) => {
           if (job.category === 'Faculty') {
@@ -80,7 +80,7 @@ const Careers = () => {
         })}
       </Accordion>
       <br />
-      <BaseHeading Heading={'Staff'} size="small" />
+      <BaseHeading Heading={'Staff'} size="tiny" />
       <Accordion styled fluid>
         {jobs.map((job, index) => {
           if (job.category === 'Staff') {
