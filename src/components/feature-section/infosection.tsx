@@ -31,8 +31,8 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
         <Grid stackable>
           <Grid.Row>
             <Grid.Column width={4}>
-              <div className={tw('bg-gray-100 p-4 rounded h-full')}>
-                <BaseHeading Heading="Parents and Students" size="small" />
+              <div className={tw('bg-gray-100 p-3 rounded h-full')}>
+                <BaseHeading Heading="Parents and Students" size="mini" />
                 {/* <h1 className={tw('text-2xl font-bold')}>Parents and Students</h1> */}
                 <List>
                   {parentsandstudents.map((accord, index) => {
@@ -66,7 +66,7 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
                 </div> */}
                 <br />
                 <div>
-                  <BaseHeading Heading={`${message.type}'s Message`} size="small" />
+                  <BaseHeading Heading={`${message.type}'s Message`} size="mini" />
                 </div>
                 <div className={tw('py-2 text-xl')}>
                   <Grid stackable>
@@ -89,7 +89,7 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
             </Grid.Column>
             <Grid.Column width={4}>
               <div className={tw('py-4 px-4 bg-gray-100 rounded h-full')}>
-                <BaseHeading Heading="News and Events" size="small" />
+                <BaseHeading Heading="News and Events" size="mini" />
                 {/* <h1 className={tw('text-2xl')}>NEWS AND EVENTS</h1> */}
                 <div style={{ overflow: 'auto', maxHeight: '600px' }}>
                   {newsandevents.map((news, index) => {

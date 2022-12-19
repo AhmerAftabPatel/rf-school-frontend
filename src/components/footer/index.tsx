@@ -67,7 +67,7 @@ const Footer = () => (
                 <List.Item>
                   RF School
                   <br />
-                  Hamali Colony, Zaheerabad, Dist : Sanga Reddy, TS
+                  Hamali Colony, Zaheerabad,<br/> Dist : Sanga Reddy, TS.
                 </List.Item>
                 <br />
                 <List.Item>

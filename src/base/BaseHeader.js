@@ -17,6 +17,7 @@ import styled from 'styled-components';
 const sizes = {
   small: '4',
   large: '5',
+  mini : '3',
   tiny : '2'
 };
 
