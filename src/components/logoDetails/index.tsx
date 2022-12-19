@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import { tw } from 'twind';
-import {Image} from 'semantic-ui-react'
-import styled from 'styled-components'
+import { Image } from 'semantic-ui-react';
+import styled from 'styled-components';
 interface LogoDetailsProp {
   color: string;
-  logo : string;
+  logo: string;
 }
 const LogoDetails = ({ color = 'blue', logo }: LogoDetailsProp) => (
-  <div style ={{position : "relative"}}>
+  <div style={{ position: 'relative' }}>
     <StyledDiv>
       <StyledImage className={tw(`mr-4 border-0`)} src={`${logo}`} alt="logo" />
       <div className={tw(`flex flex-col items-left flex justify-center`)}>
@@ -19,39 +19,52 @@ const LogoDetails = ({ color = 'blue', logo }: LogoDetailsProp) => (
   </div>
 );
 
-const StyledDiv = styled.div`{
-  display : flex;
-  justify-content : center;
-  align-items : center;
-  width : full;
-}`
+const StyledDiv = styled.div`
+   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @media only screen and (max-width: 600px) {
+      // height: 90px;
+      display: flex;
+      justify-content: left;
+      align-items: left;
+    }
+  }
+`;
 
+const StyledImage = styled(Image)`
+  &&&&& {
+    height: 150px;
+    @media only screen and (max-width: 600px) {
+      height: 90px;
+    }
+  }
+`;
 
-const StyledImage = styled(Image)`&&&&&{
-  height : 150px;
-  @media only screen and (max-width: 600px) {
-    height : 90px;
-}
-}`
+const StyledSubheader = styled.span`
+   {
+    font-size: 17px;
+    @media only screen and (max-width: 600px) {
+      // font-size : 15px;4
+      font-size: 13px;
+    }
+  }
+`;
 
-const StyledSubheader = styled.span`{
-  font-size : 17px;
-  @media only screen and (max-width: 600px) {
-    // font-size : 15px;4
-    font-size : 13px;
-}
-}`
+const StyledSmall = styled.span`
+   {
+    font-size: 13px;
+    position: absolute;
+    bottom: 2px;
+    float: right;
 
-const StyledSmall = styled.span`{
-  font-size : 13px;
-  position : absolute;
-  bottom : 2px;
-  float : right;
-
-  @media only screen and (max-width: 600px) {
-    // font-size : 15px;
-    position : relative;
-}
-}`
+    @media only screen and (max-width: 600px) {
+      // font-size : 15px;
+      position: relative;
+    }
+  }
+`;
 // #1e3a8a
 export default LogoDetails;

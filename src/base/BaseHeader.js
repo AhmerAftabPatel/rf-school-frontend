@@ -17,7 +17,7 @@ import styled from 'styled-components';
 const sizes = {
   small: '4',
   large: '5',
-  tiny : '3'
+  tiny : '2'
 };
 
 const BaseHeading = ({ Heading, size = 'large', center=false }) => {

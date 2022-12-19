@@ -70,6 +70,20 @@ const Careers = () => {
     setActiveIndex(newIndex);
   };
 
+  const DeleteJob = (id) => {
+    if (confirm('Are you sure')) {
+      axios
+        .delete(`${API}/job?id=${id}`)
+        .then((res) => {
+          alert('deleted!');
+          preload()
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
+  };
+
   useEffect(() => {
     preload();
     preloadPage();
@@ -87,7 +101,7 @@ const Careers = () => {
       <BreadcrumbSection sections={sections} />
       <BaseHeading Heading={'Jobs'} size="small" /> &nbsp;
       <ThemeButton onClick={() => setOpen(true)}>Post New Job</ThemeButton>
-      <ThemeButton onClick={() => history.push("/admin/jobs/all")}>View All Candidates</ThemeButton>
+      <ThemeButton onClick={() => history.push('/admin/jobs/all')}>View All Candidates</ThemeButton>
       <br />
       <br />
       <Accordion styled fluid>
@@ -121,6 +135,7 @@ const Careers = () => {
                   >
                     Edit
                   </ThemeButton>
+                  <ThemeButton onClick={() => DeleteJob(job._id)}>Delete</ThemeButton>
                 </Accordion.Content>
               </StyledDiv>
             );
@@ -160,6 +175,7 @@ const Careers = () => {
                   >
                     Edit
                   </ThemeButton>
+                  <ThemeButton onClick={() => DeleteJob(job._id)}>Delete</ThemeButton>
                 </Accordion.Content>
               </StyledDiv>
             );

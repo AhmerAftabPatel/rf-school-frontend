@@ -2,7 +2,7 @@ import { Card, Image } from 'semantic-ui-react';
 import { tw } from 'twind';
 import { home_tools } from '@/../strings/homestrings';
 import Link from 'next/link';
-import styled from 'styled-components'
+import styled from 'styled-components';
 const ToolsSection = () => (
   <section className={tw(`text-white py-4`)}>
     {/* <div className={tw("flex grid grid-col-4 grid-flow-col gap-4")}>
@@ -16,7 +16,7 @@ const ToolsSection = () => (
         return (
           <Link href={tool.href} key={index}>
             <StyledCard>
-              <div className={tw(`h-48 p-5 shadow-md bg-${tool.color}-400 flex items-center justify-center text-white`)}>
+              <div className={tw(`p-5 shadow-md bg-${tool.color}-400 flex items-center justify-center text-white`)}>
                 <Image src={tool.icon} size="tiny" /> &nbsp;
                 <h3 className={tw('font-extrabold')}>
                   {tool.label}
@@ -64,14 +64,17 @@ const ToolsSection = () => (
   </section>
 );
 
-const StyledCard = styled(Card)`&&&&&{
-  padding : 0;
-  margin : 0 auto;
-  height : 150px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 5px 0px;
-  @media only screen and (max-width: 600px) {
-    
-}
-}`
+const StyledCard = styled(Card)`
+  &&&&& {
+    padding: 0;
+    margin: 0 auto;
+    height: 100%;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 5px 0px;
+    @media only screen and (max-width: 600px) {
+      height: 20px;
+      margin: 13px auto;
+    }
+  }
+`;
 
 export default ToolsSection;

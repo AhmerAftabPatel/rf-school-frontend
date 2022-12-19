@@ -341,6 +341,10 @@ const StyledNav1 = styled.div`
     padding: 12px 50px;
     justify-content: space-between;
     flex-wrap: wrap;
+    @media only screen and (max-width: 600px) {
+      padding : 12px;
+
+    }
   }
 `;
 

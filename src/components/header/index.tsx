@@ -154,6 +154,9 @@ const HeaderStyled = styled.div`
     width: full;
     min-height: calc(100vh - 25rem);
     border-radius : 16px;
+    @media only screen and (max-width: 600px) {
+      min-height: calc(100vh - 35rem);
+    }
   }
 `;
 
@@ -162,6 +165,7 @@ const StyledDiv = styled.div`
     padding: 15px 50px;
     @media only screen and (max-width: 600px) {
       padding: 12px;
+      margin-bottom : 15px;
     }
   }
 `;
