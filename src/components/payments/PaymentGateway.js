@@ -130,15 +130,6 @@ const Payments = () => {
   );
 };
 
-const StyledCard = styled.div`
-   {
-    // text-align: center;
-    width: 100%;
-    padding: 14px;
-    margin: 14px;
-    border: 5px;
-    width: 900px;
-  }
-`;
+
 
 export default Payments;

@@ -32,6 +32,21 @@ const Jobs = () => {
     }
   }, [history]);
 
+  const onDelete = (id) => {
+    if (confirm('Are you sure?')) {
+      axios
+        .delete(`${API}/candidate?id=${id}`)
+        .then((res) => {
+          console.log('Deleted');
+          alert('deleted!');
+        })
+        .catch((err) => {
+          console.log('delete');
+          alert(err);
+        });
+    }
+  };
+
   const sections = [
     { key: 'Home', content: 'Home', link: true, href: '/admin' },
     { key: 'Jobs', content: 'Jobs', link: true },
@@ -82,6 +97,9 @@ const Jobs = () => {
                       candidate?.address?.country}
                 </Table.Cell>
                 <Table.Cell collapsing>{candidate?.message}</Table.Cell>
+                <Table.Cell collapsing>
+                  <Icon name="trash" color="red" onClick={() => onDelete(candidate._id)} />
+                </Table.Cell>
               </Table.Row>
             );
           })}
