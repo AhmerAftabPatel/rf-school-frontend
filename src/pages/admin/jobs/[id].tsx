@@ -41,7 +41,7 @@ const Jobs = () => {
     <StyledContainer>
       <Icon name="arrow left" color="blue" style={{ cursor: 'pointer' }} onClick={() => history.back()} />
       <BreadcrumbSection sections={sections} />
-      <BaseHeading Heading={`${history.query.name}-Candidates`} size="small" />
+      <BaseHeading Heading={`${history.query.name ? history.query.name : ''} Candidates`} size="small" />
       <br />
       <Table celled>
         <Table.Header>
@@ -65,7 +65,7 @@ const Jobs = () => {
                 <Table.Cell>{candidate.email}</Table.Cell>
                 <Table.Cell>{candidate.phone_name}</Table.Cell>
                 <Table.Cell>
-                  <a href={s3_url + '/' + candidate?.resume}>View Resume</a>
+                  <a href={s3_url + candidate?.resume}>View Resume</a>
                   {candidate.phone_name}
                 </Table.Cell>
                 <Table.Cell positive={candidate?.job_id?.status} negative={!candidate?.job_id?.status}>
@@ -74,7 +74,12 @@ const Jobs = () => {
                 <Table.Cell>{candidate?.current_salary}</Table.Cell>
                 <Table.Cell>{candidate?.total_experience}</Table.Cell>
                 <Table.Cell>
-                  {candidate?.address && candidate?.address?.street_address_1 + ',' + candidate?.address?.city + ',' + candidate?.address?.country}
+                  {candidate?.address &&
+                    candidate?.address?.street_address_1 +
+                      ',' +
+                      candidate?.address?.city +
+                      ',' +
+                      candidate?.address?.country}
                 </Table.Cell>
                 <Table.Cell collapsing>{candidate?.message}</Table.Cell>
               </Table.Row>

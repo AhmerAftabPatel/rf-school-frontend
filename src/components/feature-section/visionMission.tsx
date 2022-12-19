@@ -15,6 +15,11 @@ const AccordiionData = [
 const styledDiv = css`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding : 25px 20px;
+
+  @media only screen and (max-width: 600px) {
+    padding : 20;
+  }
+
 `;
 
 const VisionAndMission = ({missionandvision}) => (

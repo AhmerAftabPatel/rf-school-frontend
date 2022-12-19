@@ -17,7 +17,7 @@ const Headerstyle = styled.div`
     padding: 20px 50px;
 
     @media only screen and (max-width: 600px) {
-      padding: 0;
+      padding: 0px;
     }
   }
 `;

@@ -60,7 +60,7 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
                     image
                     onClick={() => openModal(gall)}
                   >
-                    <Image style={{ height: '200px' }} src={`${s3_url + gall?.replace(' ', '+')}`} />
+                    <StyledImage  src={`${s3_url + gall?.replace(' ', '+')}`} />
                   </StyledCard>
                 );
               })}
@@ -85,3 +85,10 @@ const StyledCard = styled(Card)`
     }
   }
 `;
+
+const StyledImage  = styled(Image)`&&&&&{
+  height : 200px;
+  @media only screen and (max-width: 600px) {
+    height : 100%;
+  }
+}`

@@ -54,7 +54,7 @@ const SmallHeader = ({ heading, description, banner }: IProps) => {
     <StyledDiv>
       <StyledHeader banner={banner}>
         <StyledDimmer>
-          <div className={tw(`flex flex-col justify-center text-left sm:px-6 lg:px-16`)}>
+          <div className={tw(`flex flex-col justify-center text-left lg:px-16`)}>
             <div className={tw(header)} data-aos="fade-left" data-aos-duration="500">
               <h1
                 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-8xl text-left leading-snug text-white`)}
@@ -97,6 +97,9 @@ const StyledDimmer = styled.div`
     width: 100%;
     display: flex;
     border-radius : 16px;
+    @media only screen and (max-width: 600px) {
+      padding : 0;
+    }
   }
 `;
 
@@ -108,7 +111,6 @@ const StyledHeader = styled.header`
     background-size: cover;
     display: flex;
     background-attachment: fixed;
-    // background-position: center;
     border: 10px solid white;
     background-repeat: no-repeat;
     width: 100%;
@@ -128,7 +130,7 @@ const StyledDiv = styled.div`
     border-radius : 16px;
     overflow : hidden;
     @media only screen and (max-width: 600px) {
-      padding: 12px;
+      padding: 0px;
     }
   }
 `;

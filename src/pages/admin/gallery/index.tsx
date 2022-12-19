@@ -144,7 +144,7 @@ const AdminBanners = (props) => {
       <div>
         <BaseHeading Heading="Gallery" size="large" />
       </div>
-      <Card.Group itemsPerRow={4}>
+      <Card.Group itemsPerRow={4} stackable>
         {banners.map((banner, index) => {
           if (mains.indexOf(banner.type) === -1 && banner.page === 'Gallery') {
             mains.push(banner.type);

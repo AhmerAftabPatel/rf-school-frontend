@@ -276,6 +276,9 @@ const StyledCard = styled(Card)`
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     padding: 12px;
     border-radius: 12px 15px;
+    @media only screen and (max-width: 600px) {
+      width : auto;
+    }
   }
 `;
 

@@ -44,8 +44,8 @@ const PaymentsList = ({ payments,preload }) => {
                       volunt?.details.address?.city +
                       ',' +
                       volunt?.details.address?.state +
-                      ',' +
-                      volunt?.details.address?.zip_code +
+                      // ',' +
+                      // volunt?.details.address?.zip_code +
                       ',' +
                       volunt?.details.address?.country}
                   </Table.Cell>

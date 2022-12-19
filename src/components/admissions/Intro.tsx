@@ -60,6 +60,10 @@ const StyledDiv = styled.div`{
   right : 100px;
   @media only screen and (max-width: 600px) {
     position : relative;
+    margin-left : 30px;
+    diplay : flex;
+    align-items : center;
+    justify-content :center;
   }
 }`
 

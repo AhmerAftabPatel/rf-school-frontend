@@ -59,8 +59,6 @@ const headerstyle = css`
 `;
 const src = '/images/libraryjpg.jpg';
 export const GallerySlider: FC<IProps> = ({ type, gallery }) => {
-  
-
   const history = useRouter();
   return (
     <div className={tw(headerstyle)}>
@@ -84,8 +82,8 @@ export const GallerySlider: FC<IProps> = ({ type, gallery }) => {
                 onClick={() => history.push({ pathname: `/gallery/${gall._id}` })}
               >
                 {/* {gall.type === 'Photo' ? ( */}
-                <Image
-                  style={{ height: '200px' }}
+                <SyledImage
+                  // style={{ height: '200px' }}
                   // style={{ width: '300px', height: '200px' }}
                   src={`${s3_url + gall.image_url?.replace(' ', '+')}`}
                 />
@@ -115,9 +113,23 @@ const StyledCard = styled(Card)`
     border: none;
     padding: 7px;
     cursor: pointer;
+    // height : 200px;
+    // overflow : hidden;
 
     :hover {
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
+
+    @media only screen and (max-width: 600px) {
+      padding: 0px;
+      width: 100%;
+    }
   }
 `;
+
+const SyledImage = styled(Image)`&&&&&{
+  height : 200px;
+  @media only screen and (max-width: 600px) {
+    height : 100%;
+  }
+}`

@@ -22,7 +22,7 @@ interface IProps {}
   padding: 20px 70px;
 
   @media only screen and (max-width: 600px) {
-    padding: 0;
+    padding: 20px;
   }
 }
 `;

@@ -1,5 +1,6 @@
 import { API } from '@/../constants';
 import BaseHeading from '@/base/BaseHeader';
+import ThemeButton from '@/base/Button';
 import HtmlDynamic from '@/base/htmlDynamic';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -12,7 +13,7 @@ const Headerstyle = styled.div`
     padding: 20px 50px;
 
     @media only screen and (max-width: 600px) {
-      padding: 0;
+      padding: 20px;
     }
   }
 `;
@@ -50,6 +51,10 @@ const Careers = () => {
     setActiveIndex(newIndex);
   };
 
+  // const ApplyNow = () => {
+  //   scrollTo(0,1000)
+  // }
+
   useEffect(() => {
     preload();
     preloadPage();
@@ -73,6 +78,9 @@ const Careers = () => {
                   <p>
                     <div dangerouslySetInnerHTML={{ __html: job?.description }}></div>
                   </p>
+                  <a href="#apply">
+                    <ThemeButton>Apply Now</ThemeButton>
+                  </a>
                 </Accordion.Content>
               </StyledDiv>
             );
@@ -95,6 +103,9 @@ const Careers = () => {
                   <p>
                     <div dangerouslySetInnerHTML={{ __html: job?.description }}></div>
                   </p>
+                  <a href="#apply">
+                    <ThemeButton>Apply Now</ThemeButton>
+                  </a>
                 </Accordion.Content>
               </StyledDiv>
             );
@@ -106,9 +117,11 @@ const Careers = () => {
 
       <StyledCenter>
         <BaseHeading Heading={'Apply Now'} size="small" center />
-        <StyledForm>
-          <CandidateApply job={activeIndex && activeIndex > -1 && jobs[activeIndex]} />
-        </StyledForm>
+        <div id="apply">
+          <StyledForm>
+            <CandidateApply job={activeIndex && activeIndex > -1 && jobs[activeIndex]} />
+          </StyledForm>
+        </div>
       </StyledCenter>
     </Headerstyle>
   );
@@ -121,6 +134,9 @@ const StyledForm = styled.div`
     border: 5px;
     width: 900px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    @media only screen and (max-width: 600px) {
+      width: auto;
+    }
   }
 `;
 
@@ -131,7 +147,7 @@ const StyledCenter = styled.div`
     align-items: center;
     flex-direction: column;
     @media only screen and (max-width: 600px) {
-      padding: 0;
+      padding: 12px;
     }
   }
 `;

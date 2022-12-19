@@ -164,7 +164,7 @@ const StyledDiv = styled.div`
    {
     padding: 15px 50px;
     @media only screen and (max-width: 600px) {
-      padding: 12px;
+      padding: 5px;
       margin-bottom : 15px;
     }
   }

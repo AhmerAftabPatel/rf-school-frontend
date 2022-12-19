@@ -59,7 +59,6 @@ const CandidateApply = ({ job }) => {
         formData.set(key, candidate[key]);
       }
       formData.set('job_id', job_id);
-
       formData.set('address', JSON.stringify(address));
       axios
         .post(`${API}/candidate`, formData)

@@ -54,7 +54,7 @@ const Tuition = ({ type, submit }) => {
     // alert('Admissions form not yet integrated, thank you for your patience...');
     if (isValid()) {
       setLoading(true);
-      submit(values,() => {
+      submit(values, () => {
         setLoading(false);
       });
     }
@@ -192,6 +192,9 @@ const StyledCard = styled.div`
     border: 5px;
     width: 900px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    @media only screen and (max-width: 600px) {
+      width: auto;
+    }
   }
 `;
 export default Tuition;
