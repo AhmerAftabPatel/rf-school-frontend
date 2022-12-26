@@ -67,7 +67,7 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
         <br />
         <BreadcrumbSection sections={sections} />
         {/* <BaseHeading Heading={`${gallery.name}`} size="large" /> */}
-        {gallery?.name && <BaseHeading size="small" Heading={gallery.description} />}
+        {gallery.description && <BaseHeading size="small" Heading={gallery.description} />}
         <div>
           <Card.Group itemsPerRow={5} stackable>
             {gallery &&
