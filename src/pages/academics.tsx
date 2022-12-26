@@ -1,17 +1,5 @@
 import { NextSeo } from 'next-seo';
-import Page from '@/components/page';
-import Header from '@/components/header';
-import VideoSection from '@/components/video-section';
-import ListSection from '@/components/list-section';
-import FeatureSection from '@/components/feature-section';
-// import CasesSection from '@/components/cases-section';
-import SocialProof from '@/components/social-proof';
-import PricingTable from '@/components/pricing-table';
 import Footer from '@/components/footer';
-import Announcement from '@/components/announcement';
-import ToolsSection from '@/components/ToolsSection';
-import InfoSection from '@/components/feature-section/infosection';
-import VisionAndMission from '@/components/feature-section/visionMission';
 import { AcademicsInfo } from '@/components/academics/academicinfo';
 import { Intro } from '@/components/academics/intro';
 import {tw,css} from 'twind/css'

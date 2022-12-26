@@ -20,7 +20,8 @@ const Headerstyle = styled.div`
 const Careers = () => {
   const [jobs, setJobs] = useState([]);
   const [page, setPage] = useState({});
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeOpen, setApplyOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const preload = () => {
     axios
       .get(`${API}/jobs?type=live`)
@@ -47,7 +48,9 @@ const Careers = () => {
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
     const newIndex = activeIndex === index ? -1 : index;
-
+    if (activeIndex === index) {
+      setApplyOpen(false);
+    }
     setActiveIndex(newIndex);
   };
 
@@ -79,7 +82,7 @@ const Careers = () => {
                     <div dangerouslySetInnerHTML={{ __html: job?.description }}></div>
                   </p>
                   <a href="#apply">
-                    <ThemeButton>Apply Now</ThemeButton>
+                    <ThemeButton onClick={() => setApplyOpen(true)}>Apply Now</ThemeButton>
                   </a>
                 </Accordion.Content>
               </StyledDiv>
@@ -104,7 +107,7 @@ const Careers = () => {
                     <div dangerouslySetInnerHTML={{ __html: job?.description }}></div>
                   </p>
                   <a href="#apply">
-                    <ThemeButton>Apply Now</ThemeButton>
+                    <ThemeButton onClick={() => setApplyOpen(true)}>Apply Now</ThemeButton>
                   </a>
                 </Accordion.Content>
               </StyledDiv>
@@ -118,9 +121,11 @@ const Careers = () => {
       <StyledCenter>
         <BaseHeading Heading={'Apply Now'} size="small" center />
         <div id="apply">
-          <StyledForm>
-            <CandidateApply job={activeIndex && activeIndex > -1 && jobs[activeIndex]} />
-          </StyledForm>
+          {activeOpen && activeIndex > -1 && (
+            <StyledForm>
+              <CandidateApply job={activeIndex > -1 && jobs[activeIndex]} />
+            </StyledForm>
+          )}
         </div>
       </StyledCenter>
     </Headerstyle>

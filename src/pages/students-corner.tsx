@@ -52,7 +52,7 @@ export default function Admissions({admissions,curriculum}) {
         title="RF School - Comitted For Quality Education"
         description="RF School - Comitted For Quality Education"
       />
-      <SmallHeader heading={admissions.page} description='Resources for Students' banner={admissions.banner}/>
+      <SmallHeader heading={"Students Corner"} description='Resources for Students' banner={admissions.banner}/>
       <Headerstyle>
         {/* <IntroAdmissions admissions={admissions}/> */}
         <br/>
