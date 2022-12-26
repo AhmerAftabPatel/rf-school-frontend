@@ -48,7 +48,7 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
             <Icon
               style={{ position: 'absolute', left: 10, margin: 'auto', top: 300, zIndex: 999, color: '#FFFFFF' }}
               size="large"
-              name="arrow left"
+              name="angle left"
               onClick={() => setPreview(preview - 1)}
             />
           )}
@@ -56,7 +56,7 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
             <Icon
               style={{ position: 'absolute', right: 10, display: 'flex', margin: 'auto', top: 300, color: '#FFFFFF' }}
               size="large"
-              name="arrow right"
+              name="angle right"
               onClick={() => setPreview(preview + 1)}
             />
           )}
