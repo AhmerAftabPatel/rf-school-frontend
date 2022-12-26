@@ -29,17 +29,38 @@ const src = '/images/libraryjpg.jpg';
 const PhotosList: FC<IProps> = ({ type, gallery }) => {
   console.log(gallery, 'gallery');
   const [open, setOpen] = useState(false);
-  const [preview, setPreview] = useState('');
+  const [preview, setPreview] = useState(0);
 
-  const openModal = (child) => {
+  const openModal = (child, index) => {
     setOpen(true);
-    setPreview(child);
+    setPreview(index);
   };
   return (
     <>
       {' '}
       <PreviewModal open={open} setOpen={setOpen}>
-        <Image src={`${s3_url + preview?.replace(' ', '+')}`} style={{ height: '600px', width: '100%', margin: '0' }} />
+        <div style={{ height: '600px', width: '100%', margin: '0', position: 'relative' }}>
+          <Image
+            src={`${s3_url + gallery?.media?.[preview]?.replace(' ', '+')}`}
+            style={{ height: '600px', width: '100%', margin: '0' }}
+          />
+          {preview > 0 && (
+            <Icon
+              style={{ position: 'absolute', left: 10, margin: 'auto', top: 300, zIndex: 999, color: '#FFFFFF' }}
+              size="large"
+              name="arrow left"
+              onClick={() => setPreview(preview - 1)}
+            />
+          )}
+          {preview < gallery?.media?.length - 1 && (
+            <Icon
+              style={{ position: 'absolute', right: 10, display: 'flex', margin: 'auto', top: 300, color: '#FFFFFF' }}
+              size="large"
+              name="arrow right"
+              onClick={() => setPreview(preview + 1)}
+            />
+          )}
+        </div>
       </PreviewModal>
       <div className={tw(headerstyle)}>
         <Icon name="arrow left" onClick={() => history.back()} />
@@ -58,9 +79,9 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
                     key={index}
                     style={{ textAlign: 'center' }}
                     image
-                    onClick={() => openModal(gall)}
+                    onClick={() => openModal(gall, index)}
                   >
-                    <StyledImage  src={`${s3_url + gall?.replace(' ', '+')}`} />
+                    <StyledImage src={`${s3_url + gall?.replace(' ', '+')}`} />
                   </StyledCard>
                 );
               })}
@@ -86,9 +107,11 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const StyledImage  = styled(Image)`&&&&&{
-  height : 200px;
-  @media only screen and (max-width: 600px) {
-    height : 100%;
+const StyledImage = styled(Image)`
+  &&&&& {
+    height: 200px;
+    @media only screen and (max-width: 600px) {
+      height: 100%;
+    }
   }
-}`
+`;
