@@ -119,7 +119,29 @@ const Careers = () => {
       <Divider />
 
       <StyledCenter>
-        <BaseHeading Heading={'Apply Now'} size="small" center />
+        {activeOpen && activeIndex > -1 ? (
+          <>
+            <BaseHeading Heading={'Apply Now'} size="small" center /> &nbsp;{' '}
+            <Icon
+              size="large"
+              style={{ cursor: 'pointer' }}
+              name="angle up"
+              onClick={() => {
+                setApplyOpen(false);
+                setActiveIndex(-1);
+              }}
+            />
+          </>
+        ) : (
+          <ThemeButton
+            onClick={() => {
+              setApplyOpen(true);
+              setActiveIndex(0);
+            }}
+          >
+            Apply Now
+          </ThemeButton>
+        )}
         <div id="apply">
           {activeOpen && activeIndex > -1 && (
             <StyledForm>
