@@ -52,6 +52,9 @@ const Footer = () => (
                   <Link passHref href={'/privacy-policy'}>
                     <List.Item style ={{color : "white"}}>Privacy Policy</List.Item>
                   </Link>
+                  <Link passHref href={'/terms-and-conditions'}>
+                    <List.Item style ={{color : "white"}}>Terms and Conditions</List.Item>
+                  </Link>
                   {/* <List.Item>Contact Us</List.Item> */}
                 </List>
               </div>
