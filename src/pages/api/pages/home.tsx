@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // ♻️ Regenerate the `/tweets` page and push the resulting static files to
     // the edge
     await res.revalidate(`/${req.query.href ? req.query.href : ''}`);
+    await res.revalidate(`/`);
 
     // ✅ Inform Github that we've successfully revalidated the page
     return res.json({ revalidated: true });
