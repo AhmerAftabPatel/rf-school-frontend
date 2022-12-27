@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Curriculam from '@/components/academics/curriculam';
 import axios from 'axios';
 import { API } from '@/../constants';
-
+import { useEffect, useState } from 'react';
 
 const Headerstyle = styled.div`
    {
@@ -22,20 +22,65 @@ const Headerstyle = styled.div`
   }
 `;
 
-export const getServerSideProps = async () => {
-  const preload = await axios.get(`${API}/home`);
-  //   const fetched = await preload.data.json();
-  // console.log(fetched,"fetched")
-  if (preload.status !== 200) {
-    return {
-      notFound: true,
-    };
-  }
-  return {
-    props: preload.data,
+// export const getServerSideProps = async () => {
+//   const preload = await axios.get(`${API}/home`);
+//   //   const fetched = await preload.data.json();
+//   // console.log(fetched,"fetched")
+//   if (preload.status !== 200) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   return {
+//     props: preload.data,
+//   };
+// };
+export default function Home() {
+//   {
+//   welcome,
+//   message,
+//   newsandevents,
+//   curriculum,
+//   facilities,
+//   missionandvision,
+//   announcement,
+//   parentsandstudents,
+// }
+  const [data, setData] = useState({
+    welcome: '',
+    message: '',
+    newsandevents: '',
+    curriculum: '',
+    facilities: '',
+    missionandvision: '',
+    announcement: '',
+    parentsandstudents: '',
+  });
+
+  const prelaod = async () => {
+    await axios
+      .get(`${API}/home`)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        alert(err); 
+      });
   };
-};
-export default function Home({ welcome, message,newsandevents ,curriculum,facilities,missionandvision,announcement,parentsandstudents}) {
+  const {
+    welcome,
+    message,
+    newsandevents,
+    curriculum,
+    facilities,
+    missionandvision,
+    announcement,
+    parentsandstudents,
+  } = data;
+
+  useEffect(() => {
+    prelaod();
+  }, []);
   return (
     <div>
       <NextSeo
@@ -43,20 +88,25 @@ export default function Home({ welcome, message,newsandevents ,curriculum,facili
         description="RF School - Comitted For Quality Education"
       />
       <Header page="Home" />
-      <Headerstyle>
-        {announcement && announcement.toggle && <Announcement announcement={announcement}/>}
+      {parentsandstudents && <Headerstyle>
+        {announcement && announcement.toggle && <Announcement announcement={announcement} />}
         <ToolsSection />
-        <InfoSection welcome={welcome} message={message} newsandevents={newsandevents} parentsandstudents={parentsandstudents}/>
-        <VisionAndMission missionandvision={missionandvision}/>
+        <InfoSection
+          welcome={welcome}
+          message={message}
+          newsandevents={newsandevents}
+          parentsandstudents={parentsandstudents}
+        />
+        <VisionAndMission missionandvision={missionandvision} />
         {/* <VideoSection /> */}
         {/* <ListSection /> */}
-        <Curriculam curriculum={curriculum}/>
-        <FeatureSection facilities={facilities}/>
+        <Curriculam curriculum={curriculum} />
+        <FeatureSection facilities={facilities} />
         {/* <ContactUs /> */}
         {/* <CasesSection /> */}
         {/* <SocialProof /> */}
         {/* <PricingTable /> */}
-      </Headerstyle>
+      </Headerstyle>}
       <Footer />
     </div>
   );
