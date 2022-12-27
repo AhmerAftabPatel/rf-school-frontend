@@ -2,20 +2,23 @@ import { Card, Image } from 'semantic-ui-react';
 import { tw } from 'twind';
 import { home_tools } from '@/../strings/homestrings';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-const ToolsSection = () => (
-  <section className={tw(`text-white py-4`)}>
-    {/* <div className={tw("flex grid grid-col-4 grid-flow-col gap-4")}>
+const ToolsSection = () => {
+  const history = useRouter();
+  return (
+    <section className={tw(`text-white py-4`)}>
+      {/* <div className={tw("flex grid grid-col-4 grid-flow-col gap-4")}>
     <div className={tw("h-24 p-5 bg-rose-400 flex items-center justify-center")}>01</div>
     <div className={tw("h-24 p-5 bg-rose-400 flex items-center justify-center")}>01</div>
     <div className={tw("h-24 p-5 bg-rose-400 flex items-center justify-center")}>01</div>
     <div className={tw("h-24 p-5 bg-rose-400 flex items-center justify-center")}>01</div>
     </div> */}
-    <Card.Group itemsPerRow={4} centered stackable>
-      {home_tools.map((tool, index) => {
-        return (
-          <Link href={tool.href} key={index}>
-            <StyledCard>
+      <Card.Group itemsPerRow={4} centered stackable>
+        {home_tools.map((tool, index) => {
+          return (
+            // <Link href={tool.href} key={index}>
+            <StyledCard onClick={() => history.push(tool.href)}>
               <div className={tw(`p-5 shadow-md bg-${tool.color}-400 flex items-center justify-center text-white`)}>
                 <Image src={tool.icon} size="tiny" /> &nbsp;
                 <h3 className={tw('font-extrabold')}>
@@ -25,11 +28,11 @@ const ToolsSection = () => (
                 </h3>
               </div>
             </StyledCard>
-          </Link>
-        );
-      })}
-      {/* <div className={tw('flex flex-nowrap justify-around text-white')}> */}
-      {/* <Card>
+            // </Link>
+          );
+        })}
+        {/* <div className={tw('flex flex-nowrap justify-around text-white')}> */}
+        {/* <Card>
         <div className={tw('h-48 p-5 shadow-md bg-red-400 flex items-center justify-center')}>
           <Image src="/images/icons/checklist.png" size="tiny" /> &nbsp;
           <h3 className={tw('font-extrabold')}>
@@ -59,10 +62,11 @@ const ToolsSection = () => (
           <h1 className={tw('text-2xl font-extrabold')}>&nbsp;Photo Gallery</h1>
         </div>
       </Card> */}
-      {/* </div> */}
-    </Card.Group>
-  </section>
-);
+        {/* </div> */}
+      </Card.Group>
+    </section>
+  );
+};
 
 const StyledCard = styled(Card)`
   &&&&& {

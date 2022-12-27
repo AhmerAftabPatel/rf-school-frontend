@@ -237,9 +237,11 @@ const Navigation = () => {
                   <Dropdown.Menu>
                     {link?.submenu?.map((sub, index) => {
                       return (
-                        <Link href={sub.href} key={index}>
-                          <Dropdown.Item>{sub.page}</Dropdown.Item>
-                        </Link>
+                        // <Link href={sub.href} key={index}>
+                        <Dropdown.Item href={sub.href} key={index} link>
+                          {sub.page}
+                        </Dropdown.Item>
+                        // </Link>
                       );
                     })}
                   </Dropdown.Menu>
@@ -247,44 +249,14 @@ const Navigation = () => {
               );
             } else {
               return (
-                <Link href={link.href} key={link.page} passHref>
-                  <Menu.Item as={'a'} link>
-                    {link.page}
-                  </Menu.Item>
-                </Link>
+                // <Link href={link.href} key={link.page} passHref>
+                <Menu.Item as={'a'} link href={link.href} key={link.page}>
+                  {link.page}
+                </Menu.Item>
+                // </Link>
               );
             }
           })}
-          {/* <Menu.Item>Home</Menu.Item>
-          <Dropdown text="Shopping" pointing className="link item">
-            <Dropdown.Menu>
-              <Dropdown.Header>Categories</Dropdown.Header>
-              <Dropdown.Item>
-                <Dropdown text="Clothing">
-                  <Dropdown.Menu>
-                    <Dropdown.Header>Mens</Dropdown.Header>
-                    <Dropdown.Item>Shirts</Dropdown.Item>
-                    <Dropdown.Item>Pants</Dropdown.Item>
-                    <Dropdown.Item>Jeans</Dropdown.Item>
-                    <Dropdown.Item>Shoes</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Header>Womens</Dropdown.Header>
-                    <Dropdown.Item>Dresses</Dropdown.Item>
-                    <Dropdown.Item>Shoes</Dropdown.Item>
-                    <Dropdown.Item>Bags</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Dropdown.Item>
-              <Dropdown.Item>Home Goods</Dropdown.Item>
-              <Dropdown.Item>Bedroom</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Header>Order</Dropdown.Header>
-              <Dropdown.Item>Status</Dropdown.Item>
-              <Dropdown.Item>Cancellations</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Menu.Item>Forums</Menu.Item>
-          <Menu.Item>Contact Us</Menu.Item> */}
         </Menu>
       </nav>
       <nav className={tw(`bg-blue-800 text-white md:hidden`)}>
@@ -310,24 +282,25 @@ const Navigation = () => {
                       );
                     } else {
                       return (
-                        <Link href={link.href} key={link.page} passHref>
-                          <Menu.Item as={'a'} link>
-                            {link.page}
-                          </Menu.Item>
-                        </Link>
+                        // <Link href={link.href} key={link.page} passHref>
+                        <Menu.Item as={'a'} href={link.href} link key={link.page}>
+                          {/* <a href={link.href} > */}
+                          {link.page}
+                          {/* </a> */}
+                        </Menu.Item>
+                        // {/* </Link> */}
                       );
                     }
                   })}
                 </div>
               </div>
             </div>
-            
           </div>
-          <div className={tw(`-mr-4 flex justify-right md:hidden`)}>
-              <MenuButton showMenu={showMenu} toggleMenu={toggleMenu} />
-            </div>
+          {/* <div className={tw(`-mr-4 flex justify-right md:hidden`)}>
+            <MenuButton showMenu={showMenu} toggleMenu={toggleMenu} />
+          </div> */}
         </div>
-        {showMenu ? <MobileMenu /> : null}
+        {/* {showMenu ? <MobileMenu /> : null} */}
       </nav>
     </div>
   );
@@ -342,8 +315,7 @@ const StyledNav1 = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     @media only screen and (max-width: 600px) {
-      padding : 12px;
-
+      padding: 12px;
     }
   }
 `;

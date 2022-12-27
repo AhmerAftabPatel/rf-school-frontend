@@ -7,7 +7,8 @@ import { useEffect, useRef, useState } from 'react';
 import HtmlDynamic from '@/base/htmlDynamic';
 import BaseHeading from '@/base/BaseHeader';
 import Link from 'next/link';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
 // export const getServerSideProps = async (context) => {
 //   const preload = await axios.get(`${API}/page?href=welcome`);
 //   const fetched = await preload.data.json();
@@ -24,6 +25,7 @@ import styled from 'styled-components'
 //   };
 // };
 const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) => {
+  const history = useRouter();
   // console.log(welcome,"welcome")
   return (
     <section className={tw(`bg-white pb-6 py-5`)}>
@@ -37,18 +39,29 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
                 <List>
                   {parentsandstudents.map((accord, index) => {
                     return (
-                      <Link href={accord.href}>
-                        <List.Item style={{ cursor: 'pointer',color : "blue" }} key={index} className={tw('text-xl font-medium m-2')}>
-                          <StyledHover>-- {accord.page}</StyledHover>
-                        </List.Item>
-                      </Link>
+                      // <Link href={accord.href}>
+                      <List.Item
+                        link
+                        href={accord.href}
+                        style={{ cursor: 'pointer', color: 'blue' }}
+                        key={index}
+                        className={tw('text-xl font-medium m-2')}
+                      >
+                        <StyledHover>-- {accord.page}</StyledHover>
+                      </List.Item>
+                      // </Link>
                     );
                   })}
-                   <Link href={"students-corner"}>
-                        <List.Item style={{ cursor: 'pointer',color : "blue" }}  className={tw('text-xl font-medium m-2')}>
-                          <StyledHover>-- Students Corner</StyledHover>
-                        </List.Item>
-                      </Link>
+                  {/* <Link href={'students-corner'}> */}
+                  <List.Item
+                    link
+                    href={'students-corner'}
+                    style={{ cursor: 'pointer', color: 'blue' }}
+                    className={tw('text-xl font-medium m-2')}
+                  >
+                    <StyledHover>-- Students Corner</StyledHover>
+                  </List.Item>
+                  {/* </Link> */}
                 </List>
               </div>
             </Grid.Column>
@@ -93,20 +106,20 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
                 {/* <h1 className={tw('text-2xl')}>NEWS AND EVENTS</h1> */}
                 <div style={{ overflow: 'auto', maxHeight: '600px' }}>
                   {newsandevents.map((news, index) => {
-                    console.log(news.href, 'news.href');
                     return (
-                      <Link key={index} href={encodeURIComponent(news.href)}>
-                        <div
-                          className={tw(
-                            'items-center text-bold hover:text-blue-800 cursor-pointer mb-2 text-ellipsis overflow-hidden',
-                          )}
-                        >
-                          <div dangerouslySetInnerHTML={{ __html: news?.description?.slice(0, 140) + '...' }}></div>
-                          {/* {news?.description?.slice(1, 140)} */}
-                          {/* <hr /> */}
-                          <Divider />
-                        </div>
-                      </Link>
+                      // <Link key={index} href={encodeURIComponent(news.href)}>
+                      <div
+                        onClick={() => history.push(encodeURIComponent(news.href))}
+                        className={tw(
+                          'items-center text-bold hover:text-blue-800 cursor-pointer mb-2 text-ellipsis overflow-hidden',
+                        )}
+                      >
+                        <div dangerouslySetInnerHTML={{ __html: news?.description?.slice(0, 140) + '...' }}></div>
+                        {/* {news?.description?.slice(1, 140)} */}
+                        {/* <hr /> */}
+                        <Divider />
+                      </div>
+                      // </Link>
                     );
                   })}
                 </div>
@@ -119,11 +132,13 @@ const InfoSection = ({ welcome, message, newsandevents, parentsandstudents }) =>
   );
 };
 
-const StyledHover = styled.span`{
-  color : blue;
-  :hover{
-    color : red;
+const StyledHover = styled.span`
+   {
+    color: blue;
+    :hover {
+      color: red;
+    }
   }
-}`
+`;
 
 export default InfoSection;

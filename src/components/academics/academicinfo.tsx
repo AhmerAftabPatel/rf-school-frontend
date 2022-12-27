@@ -56,8 +56,8 @@ export const AcademicsInfo: FC<IProps> = ({ type, curriculum }) => {
         <Card.Group itemsPerRow={3} stackable>
           {curriculum.map((school, index) => {
             return (
-              <Link key={index} href={'academics#' + school.href}>
-                <Card raised color="blue">
+              // <Link key={index} href={'academics#' + school.href}>
+                <Card key={index} raised color="blue" href={'academics#' + school.href}>
                   <StyledImage>
                     <Image
                       centered
@@ -75,7 +75,7 @@ export const AcademicsInfo: FC<IProps> = ({ type, curriculum }) => {
                     {/* </Card.Description> */}
                   </Card.Content>
                 </Card>
-              </Link>
+              // </Link>
             );
           })}
         </Card.Group>
