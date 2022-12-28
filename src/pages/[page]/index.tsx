@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const id = params.page;
-  const preload = await axios.get(`${API}/${id}`);
+  const preload = await axios.get(`${API}/page?href=${id}`);
   // const changes = await axios.get(`${API}/changes`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
