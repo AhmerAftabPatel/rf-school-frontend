@@ -1,7 +1,10 @@
 import Head from 'next/head';
-import Navigation from '@/components/navigation';
+// import Navigation from '@/components/navigation';
 import { tw } from 'twind';
-
+import dynamic from 'next/dynamic';
+const Navigation = dynamic(() => import('@/components/navigation'), {
+  ssr: false,
+});
 interface IProps {
   children: React.ReactNode;
 }

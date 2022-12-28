@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
+
 import 'react-quill/dist/quill.snow.css';
 import { Dropdown, Form, Icon, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import BreadcrumbSection from '@/base/Breadcrumb';
 import { s3_url } from '@/../constants';
+import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
 });
