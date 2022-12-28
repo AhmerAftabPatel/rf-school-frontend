@@ -238,9 +238,24 @@ const Navigation = () => {
                     {link?.submenu?.map((sub, index) => {
                       return (
                         // <Link href={sub.href} key={index}>
-                        <Dropdown.Item href={sub.href} key={index} link>
+                        // <Dropdown.Item href={sub.href} key={index} link>
+                        <Link
+                          style={{
+                            display: 'flex',
+                            color: 'black',
+                            width: '100%',
+                            height: 40,
+                            padding: '12px',
+                            textAlign: 'center',
+                            justifyContent: 'left',
+                            alignItems: 'center',
+                          }}
+                          href={sub.href}
+                          passHref
+                        >
                           {sub.page}
-                        </Dropdown.Item>
+                        </Link>
+                        // </Dropdown.Item>
                         // </Link>
                       );
                     })}
@@ -249,11 +264,22 @@ const Navigation = () => {
               );
             } else {
               return (
-                // <Link href={link.href} key={link.page} passHref>
-                <Menu.Item as={'a'} link href={link.href} key={link.page}>
+                // <Menu.Item as={'a'} key={link.page}>
+                <Link
+                  style={{
+                    display: 'flex',
+                    color: 'white',
+                    width: '100%',
+                    textAlign: 'center',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  href={link.href}
+                  passHref
+                >
                   {link.page}
-                </Menu.Item>
-                // </Link>
+                </Link>
+                // </Menu.Item>
               );
             }
           })}
