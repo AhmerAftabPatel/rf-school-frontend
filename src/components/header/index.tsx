@@ -35,22 +35,23 @@ interface IProps {
   // heading: string;
   // description: string;
   page: string;
+  banner : any;
 }
 
-const Header = ({ page }: IProps) => {
-  const [banner, setBanner] = useState([]);
-  const [pageNumber, setPage] = useState(0);
-  const preload = () => {
-    axios.get(`${API}/banner?page=${page}`).then((res: any) => {
-      setBanner(res.data);
-      console.log(res, 'res');
-    });
-  };
+const Header = ({ page,banner }: IProps) => {
+  // const [banner, setBanner] = useState([]);
+  // const [pageNumber, setPage] = useState(0);
+  // const preload = () => {
+  //   axios.get(`${API}/banner?page=${page}`).then((res: any) => {
+  //     setBanner(res.data);
+  //     console.log(res, 'res');
+  //   });
+  // };
 
-  useEffect(() => {
-    AOS.init();
-    preload();
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  //   preload();
+  // }, []);
 
   // const settings = {
   //   customPaging: function (i) {

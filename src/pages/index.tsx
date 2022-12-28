@@ -11,7 +11,6 @@ import Curriculam from '@/components/academics/curriculam';
 import axios from 'axios';
 import { API } from '@/../constants';
 
-
 const Headerstyle = styled.div`
    {
     padding: 20px 50px;
@@ -24,34 +23,51 @@ const Headerstyle = styled.div`
 
 export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/home`);
+  const banner = await axios.get(`${API}/banner?page=Home`);
+// console.log(banner)
   // const changes = await axios.get(`${API}/changes`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
   if (preload.status !== 200) {
-    return {  
+    return {
       notFound: true,
     };
   }
   return {
-    props: preload.data,
+    props: { data: preload.data, banner: banner.data },
     // revalidate: changes ? 10000 : false,
   };
 };
-export default function Home({ welcome, message,newsandevents ,curriculum,facilities,missionandvision,announcement,parentsandstudents}) {
+export default function Home({ banner, data }) {
+  const {
+    welcome,
+    message,
+    newsandevents,
+    curriculum,
+    facilities,
+    missionandvision,
+    announcement,
+    parentsandstudents,
+  } = data;
   return (
     <div>
       <NextSeo
         title="RF School - Comitted For Quality Education"
         description="RF School - Comitted For Quality Education"
       />
-      <Header page="Home" />
+      <Header page="Home" banner={banner} />
       <Headerstyle>
-        {announcement && announcement.toggle && <Announcement announcement={announcement}/>}
+        {announcement && announcement.toggle && <Announcement announcement={announcement} />}
         <ToolsSection />
-        <InfoSection welcome={welcome} message={message} newsandevents={newsandevents} parentsandstudents={parentsandstudents}/>
-        <VisionAndMission missionandvision={missionandvision}/>
-        <Curriculam curriculum={curriculum}/>
-        <FeatureSection facilities={facilities}/>
+        <InfoSection
+          welcome={welcome}
+          message={message}
+          newsandevents={newsandevents}
+          parentsandstudents={parentsandstudents}
+        />
+        <VisionAndMission missionandvision={missionandvision} />
+        <Curriculam curriculum={curriculum} />
+        <FeatureSection facilities={facilities} />
       </Headerstyle>
       <Footer />
     </div>
