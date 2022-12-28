@@ -9,7 +9,7 @@ interface LogoDetailsProp {
 const LogoDetails = ({ color = 'blue', logo }: LogoDetailsProp) => (
   <div style={{ position: 'relative' }}>
     <StyledDiv>
-      <StyledImage className={tw(`mr-4 border-0`)} src={`${logo}`} alt="logo" />
+      <StyledImage className={tw(`mr-4 border-0`)} style = {{maxHeight : '150px'}} src={`${logo}`} alt="logo" />
       <div className={tw(`flex flex-col items-left flex justify-center`)}>
         <h2 className={tw(`lg:text-6xl text-3xl text-${color}-900 font-bold text-bold m-0`)}>RF School</h2>
         <StyledSubheader>Committed for Quality Education</StyledSubheader>

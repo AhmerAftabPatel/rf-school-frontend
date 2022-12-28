@@ -24,7 +24,7 @@ const headerstyle = css`
   }
 `;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/page?href=admission-form`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")

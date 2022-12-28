@@ -14,7 +14,7 @@ interface IProps {}
  * @author
  * @function @Facilities
  **/
- export const getServerSideProps = async () => {
+ export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/pages?page=Facilities`);
   const preload1 = await axios.get(`${API}/page?href=facilities`);
   if (preload.status !== 200) {

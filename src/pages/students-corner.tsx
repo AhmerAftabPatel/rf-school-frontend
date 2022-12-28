@@ -19,7 +19,7 @@ import SmallHeader from '@/components/header/smallHeader';
 import axios from 'axios';
 import { API } from '@/../constants';
 import HtmlDynamic from '@/base/htmlDynamic';
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/page?href=students-corner`);
   const preload1 = await axios.get(`${API}/pages?page=Students Corner`);
   if (preload.status !== 200) {

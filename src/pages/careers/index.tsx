@@ -21,15 +21,19 @@ const Careers = () => {
   const [jobs, setJobs] = useState([]);
   const [page, setPage] = useState({});
   const [activeOpen, setApplyOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const preload = () => {
+    setLoading(true)
     axios
       .get(`${API}/jobs?type=live`)
       .then((res) => {
         setJobs(res.data.jobs);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false)
         alert(err);
       });
   };
@@ -67,6 +71,7 @@ const Careers = () => {
       {page && <HtmlDynamic data={page} />}
       <br />
       <BaseHeading Heading={'Faculty'} size="tiny" />
+      {loading && <p style={{textAlign : 'center'}}>Loading...</p>}
       <Accordion styled fluid>
         {jobs.map((job, index) => {
           if (job.category === 'Faculty') {
