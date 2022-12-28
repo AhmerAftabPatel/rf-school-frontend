@@ -16,12 +16,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     //🙅‍♀️ No mask, no entry
     return res.status(401).json({ message: 'Invalid token' });
   }
-
+  const homepages = [
+    'Curriculum',
+    'Facilities',
+    'Parents & Students',
+    'welcome',
+    'News and Events',
+    'Parents & Students',
+  ];
   try {
     // ♻️ Regenerate the `/tweets` page and push the resulting static files to
     // the edge
-    await res.revalidate(`/${req.query.href ? req.query.href : ''}`);
-    await res.revalidate(`/`);
+    await res.revalidate(`/${req.query.page}`);
+    if (homepages.indexOf(req.query.page.toString()) > -1) {
+      await res.revalidate(`/`);
+    }
 
     // ✅ Inform Github that we've successfully revalidated the page
     return res.json({ revalidated: true });

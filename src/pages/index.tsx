@@ -24,6 +24,7 @@ const Headerstyle = styled.div`
 
 export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/home`);
+  // const changes = await axios.get(`${API}/changes`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
   if (preload.status !== 200) {
@@ -33,6 +34,7 @@ export const getStaticProps = async () => {
   }
   return {
     props: preload.data,
+    // revalidate: changes ? 10000 : false,
   };
 };
 export default function Home({ welcome, message,newsandevents ,curriculum,facilities,missionandvision,announcement,parentsandstudents}) {
@@ -48,14 +50,8 @@ export default function Home({ welcome, message,newsandevents ,curriculum,facili
         <ToolsSection />
         <InfoSection welcome={welcome} message={message} newsandevents={newsandevents} parentsandstudents={parentsandstudents}/>
         <VisionAndMission missionandvision={missionandvision}/>
-        {/* <VideoSection /> */}
-        {/* <ListSection /> */}
         <Curriculam curriculum={curriculum}/>
         <FeatureSection facilities={facilities}/>
-        {/* <ContactUs /> */}
-        {/* <CasesSection /> */}
-        {/* <SocialProof /> */}
-        {/* <PricingTable /> */}
       </Headerstyle>
       <Footer />
     </div>

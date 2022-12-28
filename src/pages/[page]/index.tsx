@@ -10,17 +10,42 @@ import { useEffect, useState } from 'react';
 import Folder from '@/base/folder';
 import { Icon } from 'semantic-ui-react';
 
-export default function About() {
-  const [data, setData] = useState({
-    _id: '',
-    heading: '',
-    description: '',
-    page: '',
-    banner: '',
-    hred: '',
-    folder: '',
-    flyer : ""
-  });
+
+export const getStaticPaths = async () => {
+
+  return {
+      paths: [], //indicates that no page needs be created at build time
+      fallback: 'blocking' //indicates the type of fallback
+  }
+}
+export const getStaticProps = async (context) => {
+  const { params } = context;
+  const id = params.page;
+  const preload = await axios.get(`${API}/${id}`);
+  // const changes = await axios.get(`${API}/changes`);
+  //   const fetched = await preload.data.json();
+  // console.log(fetched,"fetched")
+  if (preload.status !== 200) {
+    return {  
+      notFound: true,
+    };
+  }
+  return {
+    props: preload.data,
+    // revalidate: changes ? 10000 : false,
+  };
+};
+export default function About(data) {
+  // const [data, setData] = useState({
+  //   _id: '',
+  //   heading: '',
+  //   description: '',
+  //   page: '',
+  //   banner: '',
+  //   hred: '',
+  //   folder: '',
+  //   flyer : ""
+  // });
   const headerstyle = css`
     padding: 20px 50px;
 
@@ -28,22 +53,22 @@ export default function About() {
       padding: 0;
     }
   `;
-  const history = useRouter();
-  const preload = (path) => {
-    axios
-      .get(`${API}/page?href=${path}`)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  };
-  useEffect(() => {
-    if (history.asPath.replace('/', '') !== '[page]') {
-      preload(history.asPath.replace('/', ''));
-    }
-  }, [history]);
+  // const history = useRouter();
+  // const preload = (path) => {
+  //   axios
+  //     .get(`${API}/page?href=${path}`)
+  //     .then((res) => {
+  //       setData(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response);
+  //     });
+  // };
+  // useEffect(() => {
+  //   if (history.asPath.replace('/', '') !== '[page]') {
+  //     preload(history.asPath.replace('/', ''));
+  //   }
+  // }, [history]);
   return (
     <div>
       <NextSeo
