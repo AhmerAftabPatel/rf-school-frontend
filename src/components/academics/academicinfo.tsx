@@ -16,7 +16,7 @@ interface IProps {
  * @function @AcademicsInfo
  **/
 
-export const AcademicsInfo: FC<IProps> = ({ type, curriculum ,mobile}) => {
+export const AcademicsInfo: FC<IProps> = ({ type, curriculum ,mobile=false}) => {
   return (
     <div className={tw('py-5')}>
       {type !== 'general' ? (

@@ -57,7 +57,7 @@ export default function Admissions({admissions,curriculum}) {
         {/* <IntroAdmissions admissions={admissions}/> */}
         <br/>
         {/* <HtmlDynamic data={admissions}/> */}
-        <AcademicsInfo type='notgeneral' curriculum={curriculum}/>
+        <AcademicsInfo type='notgeneral' curriculum={curriculum} mobile={false}/>
       </Headerstyle>
       <Footer />
     </div>
