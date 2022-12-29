@@ -66,10 +66,10 @@ export default function Home({ banner, data }) {
       />
       <MediaContextProvider>
         <Media greaterThan="mobile">
-          <Header page="Home" banner={banner} />
+          <Header page="Home" banner={banner} mobile={false}/>
           <Headerstyle>
             {announcement && announcement.toggle && <Announcement announcement={announcement} />}
-            <ToolsSection />
+            <ToolsSection mobile={false}/>
             <InfoSection
               welcome={welcome}
               message={message}

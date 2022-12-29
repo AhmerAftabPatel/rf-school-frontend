@@ -40,7 +40,7 @@ export default function Academics({curriculum,academics}) {
       <SmallHeader heading="Academics" description="..." banner={curriculum[0].banner}/>
       <main className={tw(headerstyle)}>
         <Intro description={academics.description} heading={"Curriculum"}/>
-        <AcademicsInfo type='notgereral' curriculum={curriculum}/>
+        <AcademicsInfo type='notgereral' curriculum={curriculum} mobile={false}/>
       </main>
       <Footer />
     </div>
