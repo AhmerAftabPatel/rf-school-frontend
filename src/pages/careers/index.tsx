@@ -17,37 +17,50 @@ const Headerstyle = styled.div`
     }
   }
 `;
-const Careers = () => {
+
+export const getStaticProps = async () => {
+  const preload = await axios.get(`${API}/page?href=careers`);
+  if (preload.status !== 200) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: preload.data,
+  };
+};
+
+const Careers = (page) => {
   const [jobs, setJobs] = useState([]);
-  const [page, setPage] = useState({});
+  // const [page, setPage] = useState({});
   const [activeOpen, setApplyOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const preload = () => {
-    setLoading(true)
+    setLoading(true);
     axios
       .get(`${API}/jobs?type=live`)
       .then((res) => {
         setJobs(res.data.jobs);
-        setLoading(false)
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        setLoading(false)
+        setLoading(false);
         alert(err);
       });
   };
 
-  const preloadPage = () => {
-    axios
-      .get(`${API}/page?href=careers`)
-      .then((res) => {
-        setPage(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const preloadPage = () => {
+  //   axios
+  //     .get(`${API}/page?href=careers`)
+  //     .then((res) => {
+  //       setPage(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const handleClick = (e, titleProps) => {
     const { index } = titleProps;
@@ -64,14 +77,14 @@ const Careers = () => {
 
   useEffect(() => {
     preload();
-    preloadPage();
+    // preloadPage();
   }, []);
   return (
     <Headerstyle>
       {page && <HtmlDynamic data={page} />}
       <br />
       <BaseHeading Heading={'Faculty'} size="tiny" />
-      {loading && <p style={{textAlign : 'center'}}>Loading...</p>}
+      {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
       <Accordion styled fluid>
         {jobs.map((job, index) => {
           if (job.category === 'Faculty') {

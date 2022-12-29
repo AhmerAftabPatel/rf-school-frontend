@@ -120,15 +120,13 @@ const Header = ({ page,banner }: IProps) => {
                   <div className={tw(`flex flex-col justify-center text-left sm:px-6 lg:px-16 w-full`)}>
                     <HeaderStyledInner>
                       <h1
-                        data-aos="fade-left"
-                        data-aos-duration="500"
                         className={tw(`font-bold text-4xl md:text-5xl lg:text-8xl text-left leading-snug text-white`)}
                       >
                         {bann.title}
                       </h1>
                     </HeaderStyledInner>
                     <Subheader>
-                      <div data-aos="fade-left" data-aos-duration="500" data-aos-delay="300" className={tw(`mx-auto`)}>
+                      <div className={tw(`mx-auto`)}>
                         <p className={tw(`text-white text-left text-xl lg:text-3xl`)}>{bann.description}</p>
                       </div>
                     </Subheader>

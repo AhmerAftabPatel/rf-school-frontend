@@ -55,14 +55,14 @@ const SmallHeader = ({ heading, description, banner }: IProps) => {
       <StyledHeader banner={banner}>
         <StyledDimmer>
           <div className={tw(`flex flex-col justify-center text-left lg:px-16`)}>
-            <div className={tw(header)} data-aos="fade-left" data-aos-duration="500">
+            <div className={tw(header)} >
               <h1
                 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-8xl text-left leading-snug text-white`)}
               >
                 {heading}
               </h1>
             </div>
-            <div className={tw(subheader)} data-aos="fade-left" data-aos-delay="300" data-aos-duration="500">
+            <div className={tw(subheader)} >
               <div className={tw(`mx-auto`)}>
                 <p className={tw(`text-white text-left text-xl lg:text-3xl`)}>{description}</p>
               </div>

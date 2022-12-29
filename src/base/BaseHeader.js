@@ -24,7 +24,7 @@ const sizes = {
 const BaseHeading = ({ Heading, size = 'large', center=false }) => {
   return (
     <div style={center ? { display: 'flex', flexDirection: 'column', alignItems: 'center' } : {}}>
-      <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)} data-aos="fade-in">
+      <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)}>
         {Heading}
       </h1>
       <div className={tw(`h-2 w-20 bg-green-600 my-6`)} />
