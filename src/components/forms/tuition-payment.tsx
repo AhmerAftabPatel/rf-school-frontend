@@ -31,7 +31,7 @@ const Tuition = ({ type, submit }) => {
     message: '',
     email: '',
     type_of_payment: type,
-    amount: 1000,
+    amount: 0,
   });
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -165,7 +165,8 @@ const Tuition = ({ type, submit }) => {
             required={true}
             label="Enter Amount"
             type="number"
-            value={values.amount}
+            
+            value={values.amount ? values.amount : null}
             placeholder="Enter Amount"
             onChange={handleChange('amount')}
           />

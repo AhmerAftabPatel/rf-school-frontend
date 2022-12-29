@@ -36,9 +36,10 @@ interface IProps {
   // description: string;
   page: string;
   banner : any;
+  mobile : boolean;
 }
 
-const Header = ({ page,banner }: IProps) => {
+const Header = ({ page,banner , mobile}: IProps) => {
   // const [banner, setBanner] = useState([]);
   // const [pageNumber, setPage] = useState(0);
   // const preload = () => {
@@ -77,6 +78,7 @@ const Header = ({ page,banner }: IProps) => {
     autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    className: "center",
     responsive: [
       {
         breakpoint: 1024,
@@ -193,6 +195,8 @@ const StyledDiv = styled.div`
     padding: 15px 50px;
     @media only screen and (max-width: 600px) {
       padding: 5px;
+      overflow : hidden;
+      height : 100%;
       margin-bottom : 25px;
     }
   }

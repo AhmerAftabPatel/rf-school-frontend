@@ -1,5 +1,5 @@
 import { tw } from 'twind';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from '@/components/button';
 import LogoDetails from '../logoDetails';
 import { Icon, Menu, Dropdown } from 'semantic-ui-react';
@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { LinksContext } from '@/context/links/auth/LinkContext';
 import { sub_menu } from '../../../strings/aboutstring';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 interface IMenuButton {
   toggleMenu: React.MouseEventHandler<HTMLButtonElement>;
   showMenu: boolean;
@@ -126,12 +127,17 @@ const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
 
 const Navigation = () => {
   const { state } = useContext(LinksContext);
+  const history = useRouter();
   // const {data :links} = state;
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  useEffect(() => {
+    setShowMenu(false);
+  }, [history]);
 
   const MobileMenu = () => (
     <div className={tw(`md:hidden`)}>
@@ -144,7 +150,7 @@ const Navigation = () => {
         {links.map((link: any, index) => {
           if (link?.submenu && link?.submenu.length > 0) {
             return (
-              <div className={tw(`text-white block px-3 py-2 text-base font-medium`)}>
+              <div className={tw(`text-white block px-1 py-2 text-base font-medium`)}>
                 <Dropdown key={index} openOnFocus text={link.page} item className="link item">
                   <Dropdown.Menu>
                     {link?.submenu?.map((sub, index) => {
@@ -332,7 +338,23 @@ const Navigation = () => {
               </div>
             </div>
           </div>
-          <div className={tw(`-mr-4 flex justify-right md:hidden`)}>
+          <div className={tw(`-mr-4 -ml-4 flex justify-right md:hidden`)}>
+            {/* <p style ={{textAlign : "left"}}>{history.asPath}</p> */}
+            <button
+              style={{
+                background: '#ea580c',
+                color: '#FFFFFF',
+                cursor: 'pointer',
+                width: '100%',
+                padding: '15px 22px',
+                borderRadius: '5px',
+                alignSelf: 'center',
+                border: 'none',
+                float: 'left',
+              }}
+            >
+              DONATE HERE
+            </button>
             <MenuButton showMenu={showMenu} toggleMenu={toggleMenu} />
           </div>
         </div>

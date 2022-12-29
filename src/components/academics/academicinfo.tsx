@@ -8,6 +8,7 @@ import BaseHeading from '@/base/BaseHeader';
 interface IProps {
   type: string;
   curriculum: any;
+  mobile : boolean;
 }
 
 /**
@@ -15,7 +16,7 @@ interface IProps {
  * @function @AcademicsInfo
  **/
 
-export const AcademicsInfo: FC<IProps> = ({ type, curriculum }) => {
+export const AcademicsInfo: FC<IProps> = ({ type, curriculum ,mobile}) => {
   return (
     <div className={tw('py-5')}>
       {type !== 'general' ? (
@@ -53,7 +54,7 @@ export const AcademicsInfo: FC<IProps> = ({ type, curriculum }) => {
           })}
         </Grid>
       ) : (
-        <Card.Group itemsPerRow={3} stackable>
+        <Card.Group itemsPerRow={mobile ? 1 :3} stackable>
           {curriculum.map((school, index) => {
             return (
               // <Link key={index} href={'academics#' + school.href}>

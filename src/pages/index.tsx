@@ -10,6 +10,15 @@ import styled from 'styled-components';
 import Curriculam from '@/components/academics/curriculam';
 import axios from 'axios';
 import { API } from '@/../constants';
+import { createMedia } from '@artsy/fresnel';
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    mobile: 0,
+    tablet: 768,
+    computer: 1024,
+  },
+});
 
 const Headerstyle = styled.div`
    {
@@ -24,7 +33,7 @@ const Headerstyle = styled.div`
 export const getStaticProps = async () => {
   const preload = await axios.get(`${API}/home`);
   const banner = await axios.get(`${API}/banner?page=Home`);
-// console.log(banner)
+  // console.log(banner)
   // const changes = await axios.get(`${API}/changes`);
   //   const fetched = await preload.data.json();
   // console.log(fetched,"fetched")
@@ -55,20 +64,41 @@ export default function Home({ banner, data }) {
         title="RF School - Comitted For Quality Education"
         description="RF School - Comitted For Quality Education"
       />
-      <Header page="Home" banner={banner} />
-      <Headerstyle>
-        {announcement && announcement.toggle && <Announcement announcement={announcement} />}
-        <ToolsSection />
-        <InfoSection
-          welcome={welcome}
-          message={message}
-          newsandevents={newsandevents}
-          parentsandstudents={parentsandstudents}
-        />
-        <VisionAndMission missionandvision={missionandvision} />
-        <Curriculam curriculum={curriculum} />
-        <FeatureSection facilities={facilities} />
-      </Headerstyle>
+      <MediaContextProvider>
+        <Media greaterThan="mobile">
+          <Header page="Home" banner={banner} />
+          <Headerstyle>
+            {announcement && announcement.toggle && <Announcement announcement={announcement} />}
+            <ToolsSection />
+            <InfoSection
+              welcome={welcome}
+              message={message}
+              newsandevents={newsandevents}
+              parentsandstudents={parentsandstudents}
+            />
+            <VisionAndMission missionandvision={missionandvision} />
+            {/* <Curriculam curriculum={curriculum} /> */}
+            <FeatureSection facilities={facilities} />
+          </Headerstyle>
+        </Media>
+        <Media at="mobile">
+          <Header page="Home" banner={banner} mobile/>
+          <Headerstyle>
+            {announcement && announcement.toggle && <Announcement announcement={announcement} />}
+            <ToolsSection mobile/>
+            <InfoSection
+              welcome={welcome}
+              message={message}
+              newsandevents={newsandevents}
+              parentsandstudents={parentsandstudents}
+            />
+            <VisionAndMission missionandvision={missionandvision} />
+            <Curriculam curriculum={curriculum} mobile/>
+            <FeatureSection facilities={facilities}/>
+          </Headerstyle>
+        </Media>
+      </MediaContextProvider>
+
       <Footer />
     </div>
   );
