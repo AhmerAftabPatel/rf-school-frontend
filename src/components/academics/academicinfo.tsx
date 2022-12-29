@@ -32,10 +32,9 @@ export const AcademicsInfo: FC<IProps> = ({ type, curriculum ,mobile=false}) => 
                 reversed={index % 2 === 0 ? 'device' : 'computer'}
               >
                 <Grid.Column width={8}>
-                  <Image
+                  <StyledImgae
                     src={school.banner ? s3_url + school.banner : '/images/dummyprofile'}
                     size="massive"
-                    style={{ height: '500px' }}
                     centered
                   />
                 </Grid.Column>
@@ -93,3 +92,11 @@ const StyledImage = styled.div`
     overflow  hidden;
   }
 `;
+
+
+const StyledImgae = styled(Image)`&&&&&{
+  height : 500px;
+  @media only screen and (max-width: 600px) {
+    height : 100%;
+  }
+}`
