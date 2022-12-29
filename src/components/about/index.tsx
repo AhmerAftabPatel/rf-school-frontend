@@ -37,7 +37,7 @@ export const AboutInfo: FC<IProps> = (props) => {
       <div className={tw('flex items-center justify-center lg:flex-none h-full')}>
         <SideMenu activeItem={activeItem} menus={menus} handleItemClick={handleMenuChange} />
       </div>
-      <div className={tw('w-full min-h-full ml-5')} data-aos={'fade-right'}>
+      <div className={tw('w-full min-h-full ml-5')} >
         <Segment basic style={{ minHeight: '500px', padding: 0, margin: 0 }}>
           <div className={tw(headerStyle)}>
             <h1 className={tw('text-2xl font-bold text-white')}>{activeItem}</h1>

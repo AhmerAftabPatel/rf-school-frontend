@@ -91,6 +91,7 @@ const StyledCard = styled.div`
     // border : 2px solid gray;
     @media only screen and (max-width: 600px) {
       width : auto;
+      margin : 15px 0px;
     }
   }
 `;

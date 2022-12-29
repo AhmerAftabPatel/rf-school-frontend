@@ -37,15 +37,16 @@ const Footer = () => (
                   <Link passHref href={'/careers'}>
                     <List.Item style ={{color : "white"}}>Careers</List.Item>
                   </Link>
+                  <Link passHref href={'/faculty'}>
+                    <List.Item style ={{color : "white"}}>Faculty</List.Item>
+                  </Link>
                 </List>
               </div>
               <div>
                 <List>
                   {/* <List.Item>Online Donations</List.Item>
                   <List.Item>Donations In Person</List.Item> */}
-                  <Link passHref href={'/faculty'}>
-                    <List.Item style ={{color : "white"}}>Faculty</List.Item>
-                  </Link>
+                  
                   <Link passHref href={'/academics-overview'}>
                     <List.Item style ={{color : "white"}}>Admissions</List.Item>
                   </Link>

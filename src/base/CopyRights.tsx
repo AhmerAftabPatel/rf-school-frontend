@@ -5,7 +5,7 @@ const CopyRights = () => {
     <>
       <StyledDiv>
         {/* <StyledFlex> */}
-        <div>© Copyright 2022, Rahbar Foundation School, All rights reserved</div>
+        <div>© Copyright 2022, Rahbar Foundation School,<br/> All rights reserved</div>
         <div>
           Developed with 💙 By{' '}
           <a href="https://thegoldendev.netlify.app" target="_blank">

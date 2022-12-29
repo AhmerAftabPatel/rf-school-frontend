@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
 const headerstyle = css`
   padding: 20px 50px;
   @media only screen and (max-width: 600px) {
-    padding: 0;
+    padding: 20px;
   }
 `;
 const PaymentGateway = ({ data }) => {

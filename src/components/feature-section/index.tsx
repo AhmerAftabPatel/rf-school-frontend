@@ -24,7 +24,7 @@ const FeatureSection = ({ facilities }) => {
         <div className={tw(`container mx-auto p-6 bg-white`)}>
           <div className={tw(`mb-5 text-center`)}>
             {/* <h4 className={tw(`text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>Facilities</h4> */}
-            <h2 className={tw(`mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-blue-900`)} data-aos="fade-in">
+            <h2 className={tw(`mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-blue-900`)}>
               Facilities
             </h2>
             {/* <HtmlDynamic data={facilities[0]} /> */}

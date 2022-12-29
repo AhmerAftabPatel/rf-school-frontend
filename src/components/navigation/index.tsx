@@ -152,10 +152,15 @@ const Navigation = () => {
                         // <Link href={sub.href} key={index}>
                         //   <Dropdown.Item>{sub.page}</Dropdown.Item>
                         // </Link>
-                        <Link href={sub.href} key={sub.page} passHref>
-                          <Menu.Item as={'a'} link className={tw(`text-white block px-3 py-2 text-base font-medium`)}>
-                            {sub.page}
-                          </Menu.Item>
+                        <Link
+                          href={sub.href}
+                          key={sub.page}
+                          passHref
+                          style={{ display: 'flex', color: 'black', padding: '3px' }}
+                        >
+                          {/* <Menu.Item as={'a'} link className={tw(`text-white block px-3 py-2 text-base font-medium`)}> */}
+                          {sub.page}
+                          {/* </Menu.Item> */}
                         </Link>
                       );
                     })}
@@ -165,10 +170,15 @@ const Navigation = () => {
             );
           } else {
             return (
-              <Link href={link.href} key={link.page} passHref>
-                <Menu.Item as={'a'} link className={tw(`text-white block px-3 py-2 text-base font-medium`)}>
-                  {link.page}
-                </Menu.Item>
+              <Link
+                href={link.href}
+                key={link.page}
+                passHref
+                style={{ color: 'white', display: 'block', padding: '3px' }}
+              >
+                {/* <Menu.Item as={'a'} link className={tw(`text-white block px-3 py-2 text-base font-medium`)}> */}
+                {link.page}
+                {/* </Menu.Item> */}
               </Link>
             );
           }
@@ -322,11 +332,11 @@ const Navigation = () => {
               </div>
             </div>
           </div>
-          {/* <div className={tw(`-mr-4 flex justify-right md:hidden`)}>
+          <div className={tw(`-mr-4 flex justify-right md:hidden`)}>
             <MenuButton showMenu={showMenu} toggleMenu={toggleMenu} />
-          </div> */}
+          </div>
         </div>
-        {/* {showMenu ? <MobileMenu /> : null} */}
+        {showMenu ? <MobileMenu /> : null}
       </nav>
     </div>
   );

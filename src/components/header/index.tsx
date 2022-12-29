@@ -77,6 +77,32 @@ const Header = ({ page,banner }: IProps) => {
     autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
     // appendDots: (dots) => (
     //   <div
     //     style={{
@@ -154,7 +180,10 @@ const HeaderStyled = styled.div`
     min-height: calc(100vh - 25rem);
     border-radius : 16px;
     @media only screen and (max-width: 600px) {
-      min-height: calc(100vh - 35rem);
+      min-height: calc(100vh - 40rem);
+      border-radius : 0px;
+      padding : 0px;
+      margin : 0px;
     }
   }
 `;
@@ -164,7 +193,7 @@ const StyledDiv = styled.div`
     padding: 15px 50px;
     @media only screen and (max-width: 600px) {
       padding: 5px;
-      margin-bottom : 15px;
+      margin-bottom : 25px;
     }
   }
 `;

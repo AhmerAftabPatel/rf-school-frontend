@@ -8,7 +8,6 @@ import SubMenu from './Submenu';
 import Aos from 'aos';
 import styled from 'styled-components';
 
-
 /**
  * @author
  * @function @Section
@@ -17,16 +16,14 @@ import styled from 'styled-components';
 const sizes = {
   small: '4',
   large: '5',
-  mini : '3',
-  tiny : '2'
+  mini: '3',
+  tiny: '2',
 };
 
-const BaseHeading = ({ Heading, size = 'large', center=false }) => {
+const BaseHeading = ({ Heading, size = 'large', center = false }) => {
   return (
     <div style={center ? { display: 'flex', flexDirection: 'column', alignItems: 'center' } : {}}>
-      <h1 className={tw(`text-${sizes[size]}xl text-blue-900`)}>
-        {Heading}
-      </h1>
+      <h1 className={tw(`lg:text-${sizes[size]}xl text-blue-900 md:text-2lg`)}>{Heading}</h1>
       <div className={tw(`h-2 w-20 bg-green-600 my-6`)} />
     </div>
   );
