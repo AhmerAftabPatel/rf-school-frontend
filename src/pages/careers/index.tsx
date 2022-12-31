@@ -12,7 +12,6 @@ import CandidateApply from '../../components/forms/candidate';
 const Headerstyle = styled.div`
    {
     padding: 20px 50px;
-
     @media only screen and (max-width: 600px) {
       padding: 20px;
     }

@@ -15,7 +15,7 @@ interface IProps {}
  **/
 const headerstyle = css`
   padding: 20px 50px;
-
+  min-height : 90vh;
   @media only screen and (max-width: 600px) {
     padding: 0;
   }
