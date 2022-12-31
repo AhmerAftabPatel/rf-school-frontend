@@ -16,9 +16,9 @@ if (typeof window !== `undefined`) {
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     // <LinkProvider>
-    <>
+    <div style={{minHeight : "100vh"}}>
       <Navigation /> <Component {...pageProps} />
-    </>
+    </div>
     // </LinkProvider>
   );
 }
