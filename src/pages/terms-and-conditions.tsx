@@ -1,3 +1,4 @@
+import Footer from '@/components/footer';
 import styled from 'styled-components'
 const TermsAndConditions = () => {
 
@@ -11,6 +12,7 @@ const TermsAndConditions = () => {
   }
 `;
   return (
+    <>
     <Headerstyle>
       <h1 className="content-head">Terms &amp; Conditions</h1>
       <div className="content-seprater">&nbsp;</div>
@@ -126,6 +128,8 @@ const TermsAndConditions = () => {
       <p className="updated-date">Last updated on Dec 26th 2022</p>
       <p className="content-text">Shipping is not applicable for business.</p>
     </Headerstyle>
+    <Footer />
+    </>
   );
 };
 

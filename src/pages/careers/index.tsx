@@ -2,6 +2,7 @@ import { API } from '@/../constants';
 import BaseHeading from '@/base/BaseHeader';
 import ThemeButton from '@/base/Button';
 import HtmlDynamic from '@/base/htmlDynamic';
+import Footer from '@/components/footer';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Accordion, Divider, Icon } from 'semantic-ui-react';
@@ -80,6 +81,7 @@ const Careers = (page) => {
     // preloadPage();
   }, []);
   return (
+    <>
     <Headerstyle>
       {page && <HtmlDynamic data={page} />}
       <br />
@@ -169,6 +171,8 @@ const Careers = (page) => {
         </div>
       </StyledCenter>
     </Headerstyle>
+    <Footer />
+    </>
   );
 };
 
