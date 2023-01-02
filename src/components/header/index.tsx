@@ -35,11 +35,11 @@ interface IProps {
   // heading: string;
   // description: string;
   page: string;
-  banner : any;
-  mobile : boolean;
+  banner: any;
+  mobile: boolean;
 }
 
-const Header = ({ page,banner , mobile}: IProps) => {
+const Header = ({ page, banner, mobile }: IProps) => {
   // const [banner, setBanner] = useState([]);
   // const [pageNumber, setPage] = useState(0);
   // const preload = () => {
@@ -78,7 +78,7 @@ const Header = ({ page,banner , mobile}: IProps) => {
     autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    className: "center",
+    className: 'center',
     responsive: [
       {
         breakpoint: 1024,
@@ -86,56 +86,25 @@ const Header = ({ page,banner , mobile}: IProps) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
-        }
+          initialSlide: 1,
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-    // appendDots: (dots) => (
-    //   <div
-    //     style={{
-    //       backgroundColor: 'transparent',
-    //       borderRadius: '10px',
-    //       // padding: "10px"
-    //     }}
-    //   >
-    //     <ul style={{ margin: '0px' }}>
-    //       {dots.map((dot, index) => (
-    //         <span style={{ margin: '0px' }} onClick={(e) => setPage(index)}>
-    //           {dot}
-    //         </span>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // ),
-    // customPaging: (i) => (
-    //   <div
-    //     style={{
-    //       width: '10px',
-    //       height: '10px',
-    //       color: 'blue',
-    //       borderRadius: '50%',
-    //       background: pageNumber === i ? 'black' : 'grey',
-    //       marginTop: '7px',
-    //     }}
-    //   >
-    //     {/* {i + 1} */}
-    //   </div>
-    // ),
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <StyledDiv>
@@ -195,9 +164,9 @@ const StyledDiv = styled.div`
     padding: 15px 50px;
     @media only screen and (max-width: 600px) {
       padding: 5px;
-      overflow : hidden;
-      height : 100%;
-      margin-bottom : 25px;
+      overflow: hidden;
+      height: 100%;
+      margin-bottom: 25px;
     }
   }
 `;

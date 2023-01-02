@@ -5,7 +5,7 @@ import HtmlDynamic from '@/base/htmlDynamic';
 import Footer from '@/components/footer';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Accordion, Divider, Icon } from 'semantic-ui-react';
+import { Accordion, Divider, Icon, Loader } from 'semantic-ui-react';
 import styled from 'styled-components';
 import CandidateApply from '../../components/forms/candidate';
 
@@ -85,7 +85,7 @@ const Careers = (page) => {
       {page && <HtmlDynamic data={page} />}
       <br />
       <BaseHeading Heading={'Faculty'} size="tiny" />
-      {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
+      {loading &&  <div style={{position : "relative"}}><Loader active /></div>}
       <Accordion styled fluid>
         {jobs.map((job, index) => {
           if (job.category === 'Faculty') {

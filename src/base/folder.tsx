@@ -18,7 +18,7 @@ interface IProps {
 const Folder = ({ id }) => {
   const history = useRouter();
   const [open, setOpen] = useState(false);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(-1);
   const [folder, setFolder] = useState({
     media: [],
     name: '',
@@ -41,8 +41,8 @@ const Folder = ({ id }) => {
       preload(id);
     }
   }, [id]);
-  const onOpen = (image) => {
-    setImage(image);
+  const onOpen = (index) => {
+    setImage(index);
     setOpen(true);
   };
   const onClose = (image) => {
@@ -52,7 +52,23 @@ const Folder = ({ id }) => {
   const OpenModal = (
     <>
       <PreviewModal open={open} setOpen={setOpen}>
-        <Image src={image} style={{ height: '600px', width: '150%' }} />
+        <Image src={s3_url + folder?.media[image]?.replace(' ', '+')} style={{ height: '600px', width: '150%' }} />
+        {image > 0 && (
+          <Icon
+            style={{ position: 'absolute', left: 5, margin: 'auto', top: 300, zIndex: 999, color: '#FFFFFF' }}
+            size="huge"
+            name="angle left"
+            onClick={() => setImage(image - 1)}
+          />
+        )}
+        {image < folder?.media?.length - 1 && (
+          <Icon
+            style={{ position: 'absolute', right: 5, display: 'flex', margin: 'auto', top: 300, color: '#FFFFFF' }}
+            size="huge"
+            name="angle right"
+            onClick={() => setImage(image + 1)}
+          />
+        )}
       </PreviewModal>
     </>
   );
@@ -66,11 +82,11 @@ const Folder = ({ id }) => {
             <Card
               // centered
               key={index}
-              style={{ textAlign: 'center', height: '200px', overflow: 'hidden',border : "none",boxShadow : "none" }}
+              style={{ textAlign: 'center', height: '200px', overflow: 'hidden', border: 'none', boxShadow: 'none' }}
               image
-              onClick={() => onOpen(s3_url + media.replace(' ', '+'))}
+              onClick={() => onOpen(index)}
             >
-              <Image key={index} src={s3_url + media.replace(' ', '+')} style ={{minHeight: '200px'}}  />
+              <Image key={index} src={s3_url + media.replace(' ', '+')} style={{ minHeight: '200px' }} />
             </Card>
           );
         })}

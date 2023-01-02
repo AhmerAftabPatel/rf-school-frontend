@@ -4,7 +4,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { useEffect } from 'react';
 import { API, s3_url } from '@/../constants';
-// ..
 
 const headerStyle = css`
   background-color: #ffffff;
@@ -18,7 +17,6 @@ const headerStyle = css`
   width: 100%;
   min-height: calc(100vh - 26rem);
 `;
-// background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('/images/schoolasset.png');
 const header = css`
   background: transaprent;
   padding: 5px 10px;
@@ -38,7 +36,6 @@ const subheader = css`
   text-align: left;
   max-width: fit-content;
 `;
-// min-height: calc(100vh - 6rem);
 interface IProps {
   heading: string;
   description: string;
@@ -67,23 +64,7 @@ const SmallHeader = ({ heading, description, banner }: IProps) => {
                 <p className={tw(`text-white text-left text-xl lg:text-3xl`)}>{description}</p>
               </div>
             </div>
-            {/* <div className={tw(`mt-10 flex justify-center items-left`)}> */}
-            {/* <Button primary>Get started</Button> */}
-            {/* <span className={tw(`mx-2`)}>or</span> */}
-            {/* <Button>Contact us</Button> */}
-            {/* </div> */}
           </div>
-          {/* <div className={tw(`flex justify-center w-full`)}>
-      <div className={tw(`mt-4 w-full`)}>
-        <p className={tw(`font-mono uppercase text-center font-medium text-sm text-gray-600`)}>These folks get it</p>
-        <div className={tw(`flex items-center justify-center mx-auto flex-wrap`)}>
-          <Aws className={tw(`m-12 mb-8`)} width={120} />
-          <Netlify className={tw(`m-12`)} width={140} />
-          <Nike className={tw(`m-12`)} width={140} />
-          <Figma className={tw(`m-12`)} width={140} />
-        </div>
-      </div>
-    </div> */}
         </StyledDimmer>
       </StyledHeader>
     </StyledDiv>

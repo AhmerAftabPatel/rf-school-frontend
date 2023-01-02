@@ -46,16 +46,16 @@ const PhotosList: FC<IProps> = ({ type, gallery }) => {
           />
           {preview > 0 && (
             <Icon
-              style={{ position: 'absolute', left: 10, margin: 'auto', top: 300, zIndex: 999, color: '#FFFFFF' }}
-              size="large"
+              style={{ position: 'absolute', left: -10, margin: 'auto', top: 300, zIndex: 999, color: '#FFFFFF' }}
+              size="huge"
               name="angle left"
               onClick={() => setPreview(preview - 1)}
             />
           )}
           {preview < gallery?.media?.length - 1 && (
             <Icon
-              style={{ position: 'absolute', right: 10, display: 'flex', margin: 'auto', top: 300, color: '#FFFFFF' }}
-              size="large"
+              style={{ position: 'absolute', right: -30, display: 'flex', margin: 'auto', top: 300, color: '#FFFFFF' }}
+              size="huge"
               name="angle right"
               onClick={() => setPreview(preview + 1)}
             />
