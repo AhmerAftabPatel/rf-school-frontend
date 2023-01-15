@@ -46,7 +46,7 @@ const Folder = ({ id }) => {
     setOpen(true);
   };
   const onClose = (image) => {
-    setImage('');
+    setImage(-1);
     setOpen(false);
   };
   const OpenModal = (
