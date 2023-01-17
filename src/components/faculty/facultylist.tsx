@@ -11,6 +11,7 @@ interface IProps {
   board: boolean;
   people : any;
   heading : any;
+  preload : any;
 }
 
 /**
@@ -27,7 +28,7 @@ const typeOptions = [
   { key: 'Board Member', value: 'Board Member', label: 'Board Member' },
 ];
 
-const FacultyList: FC<IProps> = ({ edit, board, people, heading }) => {
+const FacultyList: FC<IProps> = ({ edit, board, people, heading , preload}) => {
   // const [people, setPeople] = useState([]);
   // const [heading, setHeading] = useState({ page: '', description: '', heading: '', banner: '', folder: '', flyer: '' });
   const [person, setPerson] = useState({
@@ -102,7 +103,7 @@ const FacultyList: FC<IProps> = ({ edit, board, people, heading }) => {
       .post(`${API}/people`, formData)
       .then((res) => {
         alert(res.data);
-        // preload();
+        preload();
         setOpen(false);
         window.scrollTo(0, 0);
       })
@@ -122,7 +123,7 @@ const FacultyList: FC<IProps> = ({ edit, board, people, heading }) => {
       .patch(`${API}/people/toggle?id=${id}`)
       .then((res) => {
         alert('Edited Successfully');
-        // preload();
+        preload();
       })
       .catch((err) => {
         console.log(err);
@@ -173,7 +174,7 @@ const FacultyList: FC<IProps> = ({ edit, board, people, heading }) => {
       .then((res) => {
         console.log(res);
         alert('Person deleted!');
-        // preload();
+        preload();
         window.scrollTo(0, 0);
       })
       .catch((err) => {

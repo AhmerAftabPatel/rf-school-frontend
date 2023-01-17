@@ -34,8 +34,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       school_board: preload.data,
-      people: preload.data.people,
-      heading: preload.data.heading,
+      people: preload1.data.people,
+      heading: preload1.data.heading,
     },
   };
 };
