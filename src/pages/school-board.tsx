@@ -55,7 +55,7 @@ const SchoolBoard: FC<IProps> = ({ school_board, people, heading }: any) => {
         <HtmlDynamic data={school_board} />
         <br />
         <hr />
-        <FacultyList edit={false} board people={people} heading={heading} />
+        <FacultyList edit={false} board people={people} heading={heading} preload={undefined}/>
       </Headerstyle>
       <Footer />
     </div>

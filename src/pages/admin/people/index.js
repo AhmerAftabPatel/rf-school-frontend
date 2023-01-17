@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import BaseHeading from '@/base/BaseHeader';
 import FacultyList from '../../../components/faculty/facultylist';
@@ -43,7 +43,7 @@ const People = (props) => {
         <BaseHeading Heading="People/Members" size="large" />
       </div>
       
-      <FacultyList edit people={people} heading={heading} preload={preload}/>
+      {people && <FacultyList edit board={false} people={people} heading={heading} preload={preload}/>}
     </StyledContainer>
   );
 };

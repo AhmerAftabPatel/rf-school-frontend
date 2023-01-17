@@ -62,7 +62,7 @@ export default function Faculty({people, heading}) {
           <Divider />
           {/* <BaseHeading Heading='Faculty & Staff' size='small'/> */}
           {/* <Section /> */}
-          <FacultyList edit={false} board={false} people={people} heading={heading}/>
+          <FacultyList edit={false} board={false} people={people} heading={heading} preload={undefined}/>
         </Container>
       </main>
       <Footer />
