@@ -19,13 +19,34 @@ import Container from '@/base/contaner';
 import {Divider} from 'semantic-ui-react'
 import FacultyList from '@/components/faculty/facultylist';
 import BaseHeading from '@/base/BaseHeader';
+import { API } from '@/../constants';
+import axios from 'axios';
 const sections = [
   { key: 'Faculty', content: 'Faculty', link: true },
   { key: 'Link1', content: 'Link1', link: true },
 ];
+// `${API}/people`
 
 
-export default function Faculty() {
+export const getStaticProps = async () => {
+  const preload = await axios.get(`${API}/people`);
+  console.log(preload);
+  //   const fetched = await preload.data.json();
+  // console.log(fetched,"fetched")
+  if (preload.status !== 200) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: {
+      people: preload.data.people,
+      heading : preload.data.heading
+    },
+  };
+};
+
+export default function Faculty({people, heading}) {
 
 
   return (
@@ -41,7 +62,7 @@ export default function Faculty() {
           <Divider />
           {/* <BaseHeading Heading='Faculty & Staff' size='small'/> */}
           {/* <Section /> */}
-          <FacultyList edit={false} board={false}/>
+          <FacultyList edit={false} board={false} people={people} heading={heading}/>
         </Container>
       </main>
       <Footer />

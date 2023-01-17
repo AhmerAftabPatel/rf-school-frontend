@@ -9,6 +9,8 @@ import HtmlDynamic from '@/base/htmlDynamic';
 interface IProps {
   edit: boolean;
   board: boolean;
+  people : any;
+  heading : any;
 }
 
 /**
@@ -25,9 +27,9 @@ const typeOptions = [
   { key: 'Board Member', value: 'Board Member', label: 'Board Member' },
 ];
 
-const FacultyList: FC<IProps> = ({ edit, board }) => {
-  const [people, setPeople] = useState([]);
-  const [heading, setHeading] = useState({ page: '', description: '', heading: '', banner: '', folder: '', flyer: '' });
+const FacultyList: FC<IProps> = ({ edit, board, people, heading }) => {
+  // const [people, setPeople] = useState([]);
+  // const [heading, setHeading] = useState({ page: '', description: '', heading: '', banner: '', folder: '', flyer: '' });
   const [person, setPerson] = useState({
     FirstName: '',
     LastName: '',
@@ -42,21 +44,21 @@ const FacultyList: FC<IProps> = ({ edit, board }) => {
     home: false,
   });
   const [open, setOpen] = useState(false);
-  const preload = () => {
-    axios
-      .get(`${API}/people`)
-      .then((res) => {
-        setPeople(res.data.people);
-        setHeading(res.data.heading);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const preload = () => {
+  //   axios
+  //     .get(`${API}/people`)
+  //     .then((res) => {
+  //       setPeople(res.data.people);
+  //       setHeading(res.data.heading);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  useEffect(() => {
-    preload();
-  }, []);
+  // useEffect(() => {
+  //   preload();
+  // }, []);
 
   const OnEditClick = (values) => {
     if (values) {
@@ -100,7 +102,7 @@ const FacultyList: FC<IProps> = ({ edit, board }) => {
       .post(`${API}/people`, formData)
       .then((res) => {
         alert(res.data);
-        preload();
+        // preload();
         setOpen(false);
         window.scrollTo(0, 0);
       })
@@ -120,7 +122,7 @@ const FacultyList: FC<IProps> = ({ edit, board }) => {
       .patch(`${API}/people/toggle?id=${id}`)
       .then((res) => {
         alert('Edited Successfully');
-        preload();
+        // preload();
       })
       .catch((err) => {
         console.log(err);
@@ -171,7 +173,7 @@ const FacultyList: FC<IProps> = ({ edit, board }) => {
       .then((res) => {
         console.log(res);
         alert('Person deleted!');
-        preload();
+        // preload();
         window.scrollTo(0, 0);
       })
       .catch((err) => {
