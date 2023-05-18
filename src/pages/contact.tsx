@@ -64,6 +64,12 @@ const Contact: FC<IProps> = (props) => {
                   <Icon size="big" name="whatsapp" />
                   &nbsp; {contacts.whatsapp}
                 </div>
+                <br/>
+                <div className={tw('flex')}>
+                  <Icon size="big" name="location arrow" />
+                  &nbsp; Hamali Colony, Zaheerabad,
+                         Dist : 502001 Sanga Reddy, TS. 
+                </div>
               </Grid.Column>
               <Grid.Column>
                 <ContactUs />
